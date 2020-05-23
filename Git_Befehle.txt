@@ -1,1 +1,10 @@
-git clone [URL]
+git clone [URL]: Git lokal klonen
+pwd: Aktuelles Verzeichnis
+ls: Listet Files auf
+ls -la: Listet alle (auch hidden) Files auf
+cat: Gibt File als Text aus
+
+git add: Track file oder track change
+git commit: Selbsterklärend
+git push: Selbsterklärend
+git init: Googlen
