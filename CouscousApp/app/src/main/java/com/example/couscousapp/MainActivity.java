@@ -2,14 +2,18 @@ package com.example.couscousapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Application;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
+import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -18,44 +22,38 @@ import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
 
+    private String serverUrl = "http://46.101.203.225:8080/demo/getNewsCategory";
+    private String localhost = "http://172.20.10.8/";
+    private String init = "http://46.101.203.225:8080/";
+
+    Button button;
+    TextView textView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
+        button = (Button) findViewById(R.id.button);
+        textView = (TextView) findViewById(R.id.textId);
 
-    public void onClickButton(View view){
-        // http://arnab.ch/blog/2013/08/asynchronous-http-requests-in-android-using-volley/
-        // http://46.101.203.225:8080/demo/getNewsCategory
-
-        String jsonInput = "{\"numberNews\": 10,\"category\": \"\"}";
-        final String URL = "/volley/resource/12";
-        // Post params to be sent to the server
-        HashMap<String, String> params = new HashMap<String, String>();
-        params.put("token", "AbCdEfGh123456");
-
-        JsonObjectRequest req = new JsonObjectRequest(URL, new JSONObject(params),
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            VolleyLog.v("Response:%n %s", response.toString(4));
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }, new Response.ErrorListener() {
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onErrorResponse(VolleyError error) {
-                VolleyLog.e("Error: ", error.getMessage());
+            public void onClick(View v) {
+                StringRequest stringRequest = new StringRequest(Request.Method.GET, init,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                textView.setText(response);
+                            }
+                        }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        textView.setText("Error...");
+                        error.printStackTrace();
+                    }
+                });
+                Mysingelton.getInstance(getApplicationContext()).addToRequestque(stringRequest);
             }
         });
-
-        // add the request object to the queue to be executed
-        MainActivity.getInstance().addToRequestQueue(req);
-
-        Log.i("info",jsonInput);
-
     }
-
 }
