@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">CouscousApp</string>
+    <string name="content_category">Content Category</string>
+    <string name="base_url">http://46.101.203.225:8080/</string>
 </resources>
