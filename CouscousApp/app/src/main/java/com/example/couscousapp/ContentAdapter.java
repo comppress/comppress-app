@@ -30,7 +30,7 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ContentV
     @Override
     public ContentViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        return new ContentViewHolder(LayoutInflater.from(context).inflate(R.layout.row_layout_movie, parent, false));
+        return new ContentViewHolder(LayoutInflater.from(context).inflate(R.layout.row_layout_content, parent, false));
     }
 
     @Override
@@ -39,7 +39,8 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ContentV
         Content content = contentList.get(position);
 
         holder.textViewTitle.setText(content.getTitle());
-        holder.textViewCategory.setText(content.getCategory());
+        holder.textViewCreationDate.setText(content.getCreationDate());
+        //holder.textViewCategory.setText(content.getCategory());
 
         Picasso.get().
                 load(content.getImageLink())
@@ -58,15 +59,18 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ContentV
     public class ContentViewHolder extends RecyclerView.ViewHolder {
 
         private TextView textViewTitle;
-        private TextView textViewCategory;
+        //private TextView textViewCategory;
+        private TextView textViewCreationDate;
         private ImageView imageViewContent;
+
 
 
         public ContentViewHolder(View itemView) {
             super(itemView);
-            textViewTitle = itemView.findViewById(R.id.tv_title);
-            textViewCategory = itemView.findViewById(R.id.tv_genre);
-            imageViewContent = itemView.findViewById(R.id.image_view_movie);
+            textViewTitle = itemView.findViewById(R.id.text_view_title);
+            textViewCreationDate = itemView.findViewById(R.id.text_view_date);
+            //textViewCategory = itemView.findViewById(R.id.text_view_category);
+            imageViewContent = itemView.findViewById(R.id.image_view_content);
 
         }
 

@@ -34,7 +34,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
     @Override
     public HomeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View theView = LayoutInflater.from(context).inflate(R.layout.row_layout_home, parent, false);
+        View theView = LayoutInflater.from(context).inflate(R.layout.row_layout_landingpage, parent, false);
 
 
         return new HomeViewHolder(theView);
@@ -71,13 +71,13 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
         public HomeViewHolder(View itemView) {
             super(itemView);
 
-            recyclerViewHorizontal = itemView.findViewById(R.id.home_recycler_view_horizontal);
+            recyclerViewHorizontal = itemView.findViewById(R.id.landingpage_recycler_view_horizontal);
             recyclerViewHorizontal.setHasFixedSize(true);
             recyclerViewHorizontal.setNestedScrollingEnabled(false);
             recyclerViewHorizontal.setLayoutManager(horizontalManager);
             recyclerViewHorizontal.setItemAnimator(new DefaultItemAnimator());
 
-            textViewCategory = itemView.findViewById(R.id.tv_movie_category);
+            textViewCategory = itemView.findViewById(R.id.text_view_category);
 
 
         }

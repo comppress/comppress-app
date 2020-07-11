@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_landing_page);
 
         dataList = new ArrayList<>();
 
@@ -54,8 +55,8 @@ public class MainActivity extends AppCompatActivity {
 
         layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
 
-        recyclerView = findViewById(R.id.rv_main);
-        progressBar = findViewById(R.id.pb_home);
+        recyclerView = findViewById(R.id.rv_landingpage);
+        progressBar = findViewById(R.id.pb_landingpage);
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
@@ -69,6 +70,10 @@ public class MainActivity extends AppCompatActivity {
         JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
 
         apiCallData(jsonPlaceHolderApi);
+
+        ImageView bearImageView = (ImageView) findViewById(R.id.imageBear);
+        bearImageView.setX(-500);
+        bearImageView.animate().translationXBy(500).setDuration(5000);
     }
 
     public void apiCallData(JsonPlaceHolderApi jsonPlaceHolderApi){
