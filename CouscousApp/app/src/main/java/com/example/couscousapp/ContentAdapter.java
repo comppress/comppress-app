@@ -1,6 +1,7 @@
 package com.example.couscousapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
@@ -40,12 +42,18 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ContentV
 
         holder.textViewTitle.setText(content.getTitle());
         holder.textViewCreationDate.setText(content.getCreationDate());
-        //holder.textViewCategory.setText(content.getCategory());
 
         Picasso.get().
                 load(content.getImageLink())
                 .into(holder.imageViewContent);
 
+        holder.contentCardView.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent intent = new Intent(context, ReaderActivity.class);
+                intent.putExtra("external_url", contentList.get(position).getLink());
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -59,9 +67,9 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ContentV
     public class ContentViewHolder extends RecyclerView.ViewHolder {
 
         private TextView textViewTitle;
-        //private TextView textViewCategory;
         private TextView textViewCreationDate;
         private ImageView imageViewContent;
+        private CardView contentCardView;
 
 
 
@@ -69,8 +77,8 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ContentV
             super(itemView);
             textViewTitle = itemView.findViewById(R.id.text_view_title);
             textViewCreationDate = itemView.findViewById(R.id.text_view_date);
-            //textViewCategory = itemView.findViewById(R.id.text_view_category);
             imageViewContent = itemView.findViewById(R.id.image_view_content);
+            contentCardView = itemView.findViewById(R.id.card_view_landingpage);
 
         }
 
