@@ -7,7 +7,7 @@
     <string name="hint_password">Password</string>
     <string name="button_cancel">Cancel</string>
     <string name="button_login">Login</string>
-    <string name="sort_title">Sortieren nach</string>
+    <string name="search_title">Suchen nach</string>
     <string name="filter_title">Filtern nach</string>
     <string name="rate_title">Bewerten</string>
     <string name="comment_title">Kommentieren</string>

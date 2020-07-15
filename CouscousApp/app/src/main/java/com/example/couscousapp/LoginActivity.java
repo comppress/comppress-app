@@ -13,27 +13,24 @@ import android.widget.ListView;
 
 import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
 public class LoginActivity extends AppCompatActivity {
-
-    EditText userEmail;
-    EditText userPassword;
-    Button buttonLogin;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
     }
 
     public void loginProcess(View view) {
 
         //LOGIN
 
-        Log.i("Info","Login successful!");
+        Log.i("Info", "Login successful!");
 
-        Intent intent = new Intent(this, LandingPage.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
 
 

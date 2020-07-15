@@ -42,6 +42,8 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ContentV
 
         holder.textViewTitle.setText(content.getTitle());
         holder.textViewCreationDate.setText(content.getCreationDate());
+        //holder.textViewSource.setText(content.getSource());
+        //holder.textViewRating.setText(content.getRating());
 
         Picasso.get().
                 load(content.getImageLink())
@@ -68,6 +70,8 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ContentV
 
         private TextView textViewTitle;
         private TextView textViewCreationDate;
+        //private TextView textViewSource;
+        //private TextView textViewRating;
         private ImageView imageViewContent;
         private CardView contentCardView;
 
@@ -77,6 +81,8 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ContentV
             super(itemView);
             textViewTitle = itemView.findViewById(R.id.text_view_title);
             textViewCreationDate = itemView.findViewById(R.id.text_view_date);
+            //textViewSource = itemView.findViewById(R.id.text_view_source);
+            //textViewRating = itemView.findViewById(R.id.text_view_rating);
             imageViewContent = itemView.findViewById(R.id.image_view_content);
             contentCardView = itemView.findViewById(R.id.card_view_landingpage);
 

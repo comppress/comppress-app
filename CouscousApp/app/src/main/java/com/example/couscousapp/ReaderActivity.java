@@ -26,6 +26,7 @@ public class ReaderActivity extends AppCompatActivity {
         Toolbar tbReader = (Toolbar) findViewById(R.id.tb_reader);
         setSupportActionBar(tbReader);
         ActionBar ab = getSupportActionBar();
+        ab.setDisplayShowTitleEnabled(false);
         ab.setDisplayHomeAsUpEnabled(true);
 
         WebView webView = findViewById(R.id.reader_webView);

@@ -13,6 +13,7 @@ public class Content {
     private String category;
     @SerializedName("rssFeedId")
     private String rssFeedId2;
+    //private String source;
 
     public void setId(Integer id) {
         this.id = id;
@@ -46,6 +47,10 @@ public class Content {
         this.rssFeedId2 = rssFeedId2;
     }
 
+    //public void setSource(String source) {
+    //  this.source = source;
+    //  }
+
     public Integer getId() {
         return id;
     }
@@ -77,4 +82,8 @@ public class Content {
     public String getRssFeedId2() {
         return rssFeedId2;
     }
+
+    //public String getSource() {
+    //  return source;
+    //  }
 }

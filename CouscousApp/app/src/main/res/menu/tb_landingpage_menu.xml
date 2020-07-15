@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/sort"
-        android:icon="@drawable/sort_24px"
-        android:title="@string/sort_title"
+        android:icon="@drawable/search_24px"
+        android:title="@string/search_title"
         app:showAsAction="always" />
     <item
         android:id="@+id/filter"
-        android:icon="@drawable/filter_alt_24px"
+        android:icon="@drawable/filter_list_24px"
         android:title="@string/filter_title"
         app:showAsAction="always" />
 </menu>

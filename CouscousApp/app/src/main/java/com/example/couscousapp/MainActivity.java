@@ -1,12 +1,17 @@
 package com.example.couscousapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Application;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -49,6 +54,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing_page);
 
+        Toolbar tbLandingPage = (Toolbar) findViewById(R.id.tb_landingpage);
+        setSupportActionBar(tbLandingPage);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+
         dataList = new ArrayList<>();
 
         adapter = new HomeAdapter(dataList, this);
@@ -71,9 +81,34 @@ public class MainActivity extends AppCompatActivity {
 
         apiCallData(jsonPlaceHolderApi);
 
-        ImageView bearImageView = (ImageView) findViewById(R.id.imageBear);
-        bearImageView.setX(-500);
-        bearImageView.animate().translationXBy(500).setDuration(5000);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.tb_landingpage_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.sort:
+                // User chose the "Sort" item, show the app settings UI...
+                Log.i("Info", "Button 'Sort' pressed");
+                return true;
+
+            case R.id.filter:
+                // User chose the "Filter" item, show the app settings UI...
+                Log.i("Info", "Button 'Filter' pressed");
+                return true;
+
+            default:
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
+
+        }
     }
 
     public void apiCallData(JsonPlaceHolderApi jsonPlaceHolderApi){
@@ -109,5 +144,4 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-
 }
