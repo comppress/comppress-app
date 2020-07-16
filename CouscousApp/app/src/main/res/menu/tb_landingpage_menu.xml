@@ -8,7 +8,7 @@
         app:showAsAction="always" />
     <item
         android:id="@+id/filter"
-        android:icon="@drawable/filter_list_24px"
+        android:icon="@drawable/equalizer"
         android:title="@string/filter_title"
         app:showAsAction="always" />
 </menu>

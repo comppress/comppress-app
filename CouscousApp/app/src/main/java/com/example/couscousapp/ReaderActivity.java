@@ -1,9 +1,11 @@
 package com.example.couscousapp;
 
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -12,8 +14,11 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class ReaderActivity extends AppCompatActivity {
 
@@ -34,6 +39,15 @@ public class ReaderActivity extends AppCompatActivity {
         webView.setWebViewClient(new WebViewClient());
         webView.loadUrl(getIntent().getStringExtra("external_url"));
 
+        FloatingActionButton fab = findViewById(R.id.floating_action_button);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                confirmDialog();
+            }
+        });
+
+
     }
 
     @Override
@@ -49,6 +63,7 @@ public class ReaderActivity extends AppCompatActivity {
             case R.id.rate:
                 // User chose the "Sort" item, show the app settings UI...
                 Log.i("Info", "Button 'Rate' pressed");
+                confirmDialog();
                 return true;
 
             case R.id.comment:
@@ -62,7 +77,7 @@ public class ReaderActivity extends AppCompatActivity {
                 return true;
 
             case R.id.browser:
-                // User chose the "Open in Browser" item, show the app settings UI...
+                // User chose the "Open in Browser" item
                 Log.i("Info", " 'Open in Browser' pressed");
                 String url = getIntent().getStringExtra("external_url");
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
@@ -74,5 +89,27 @@ public class ReaderActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
 
         }
+    }
+
+    public void confirmDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Beispiel: ConfirmDialog Rating");
+        builder.setMessage("Möchten Sie diesen Artikel als 'Fake News' deklarieren?");
+        builder.setCancelable(false);
+        builder.setPositiveButton("Lügenpresse!", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                 Log.i("Info", "Danke Merkel!");
+            }
+        });
+
+        builder.setNegativeButton("Nein", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Log.i("Info", "Artikel ist glaubwürdig.");
+            }
+        });
+
+        builder.show();
     }
 }
