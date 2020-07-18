@@ -1,6 +1,12 @@
 package com.example.couscousapp;
 
+import android.text.format.DateUtils;
+
 import com.google.gson.annotations.SerializedName;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Content {
 
@@ -71,8 +77,19 @@ public class Content {
         return description;
     }
 
-    public String getCreationDate() {
-        return creationDate;
+    public CharSequence getCreationDate() {
+        String string_date = creationDate;
+        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        long milliseconds = 0;
+        try {
+            Date d = f.parse(string_date);
+            milliseconds = d.getTime();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        long now = System.currentTimeMillis();
+        CharSequence parsedDate = DateUtils.getRelativeTimeSpanString(milliseconds, now, DateUtils.WEEK_IN_MILLIS);
+        return parsedDate;
     }
 
     public String getCategory() {

@@ -10,7 +10,7 @@ public interface JsonPlaceHolderApi {
     @GET("contents")
     Call<List<Content>> getContents();
 
-    @GET("data")
+    @GET("data?listLenght=50")
     Call<List<Data>> getData();
 
 }
