@@ -1,6 +1,7 @@
-package com.example.couscousapp;
+package com.example.couscousapp.json_model;
 
 import android.text.format.DateUtils;
+import android.util.Log;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -78,6 +79,10 @@ public class Content {
     }
 
     public CharSequence getCreationDate() {
+        if (creationDate == null) {
+            Log.i("Info", "Creation date of content is null");
+            return "Date null";
+        }
         String string_date = creationDate;
         SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         long milliseconds = 0;

@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LandingPage">
+    android:background="@color/colorPrimary">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/tb_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="start|top"
-        android:background="#FFFFFF">
+        android:background="@color/colorPrimaryDark">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/tb_landingpage"

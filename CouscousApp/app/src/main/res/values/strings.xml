@@ -7,8 +7,9 @@
     <string name="hint_password">Password</string>
     <string name="button_cancel">Cancel</string>
     <string name="button_login">Login</string>
-    <string name="search_title">Suchen nach</string>
-    <string name="filter_title">Filtern nach</string>
+    <string name="button_submit">Submit</string>
+    <string name="search_title">Suche</string>
+    <string name="customize_title">Darstellung anpassen</string>
     <string name="rate_title">Bewerten</string>
     <string name="comment_title">Kommentieren</string>
     <string name="favorite_title">Zu Favoriten hinzufügen</string>

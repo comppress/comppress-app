@@ -1,4 +1,4 @@
-package com.example.couscousapp;
+package com.example.couscousapp.activity;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
@@ -11,13 +11,17 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.RatingBar;
+import android.widget.Toast;
 
+import com.example.couscousapp.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class ReaderActivity extends AppCompatActivity {
@@ -39,13 +43,13 @@ public class ReaderActivity extends AppCompatActivity {
         webView.setWebViewClient(new WebViewClient());
         webView.loadUrl(getIntent().getStringExtra("external_url"));
 
-        FloatingActionButton fab = findViewById(R.id.floating_action_button);
+/*        FloatingActionButton fab = findViewById(R.id.floating_action_button);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 confirmDialog();
             }
-        });
+        });*/
 
 
     }
@@ -60,11 +64,11 @@ public class ReaderActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.rate:
+            /*case R.id.rate:
                 // User chose the "Sort" item, show the app settings UI...
                 Log.i("Info", "Button 'Rate' pressed");
                 confirmDialog();
-                return true;
+                return true;*/
 
             case R.id.comment:
                 // User chose the "Comment" item, show the app settings UI...
@@ -91,25 +95,55 @@ public class ReaderActivity extends AppCompatActivity {
         }
     }
 
-    public void confirmDialog() {
+//    public void confirmDialog() {
+//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//        builder.setTitle("Beispiel: ConfirmDialog Rating");
+//        builder.setMessage("Möchten Sie diesen Artikel als 'Fake News' deklarieren?");
+//        builder.setCancelable(false);
+//        builder.setPositiveButton("Lügenpresse!", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                 Log.i("Info", "Danke Merkel!");
+//            }
+//        });
+//
+//        builder.setNegativeButton("Nein", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                Log.i("Info", "Artikel ist glaubwürdig.");
+//            }
+//        });
+//
+//        builder.show();
+//    }
+
+
+    public void withRatingBar(View view) {
+
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Beispiel: ConfirmDialog Rating");
-        builder.setMessage("Möchten Sie diesen Artikel als 'Fake News' deklarieren?");
-        builder.setCancelable(false);
-        builder.setPositiveButton("Lügenpresse!", new DialogInterface.OnClickListener() {
+        LayoutInflater inflater = getLayoutInflater();
+        builder.setTitle("Bewertung");
+        View dialogLayout = inflater.inflate(R.layout.dialog_rating, null);
+        final RatingBar ratingBar1 = dialogLayout.findViewById(R.id.ratingBar1);
+        final RatingBar ratingBar2 = dialogLayout.findViewById(R.id.ratingBar2);
+        final Integer articleId = getIntent().getIntExtra("article_id", -1);
+        builder.setView(dialogLayout);
+        builder.setPositiveButton("Submit", new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-                 Log.i("Info", "Danke Merkel!");
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Toast.makeText(getApplicationContext(), "Bewertung 1: " + ratingBar1.getRating() +
+                        "\n Bewertung 2:" + ratingBar2.getRating() + "\n Artikel ID:" + articleId, Toast.LENGTH_SHORT).show();
             }
         });
-
-        builder.setNegativeButton("Nein", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Log.i("Info", "Artikel ist glaubwürdig.");
-            }
-        });
-
         builder.show();
     }
+
+/*    public void onClickSubmitButton(View view) {
+        LayoutInflater inflater = getLayoutInflater();
+        View dialogLayout = inflater.inflate(R.layout.dialog_rating, null);
+        RatingBar ratingBar1 = dialogLayout.findViewById(R.id.ratingBar1);
+        RatingBar ratingBar2 = dialogLayout.findViewById(R.id.ratingBar2);
+        Integer articleId = getIntent().getIntExtra("article_id", -1);
+        Toast.makeText(getApplicationContext(), "Bewertung 1: " + ratingBar1.getRating() + "\n Bewertung 2:" + ratingBar2.getRating(), Toast.LENGTH_SHORT).show();
+    }*/
 }

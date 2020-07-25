@@ -1,4 +1,7 @@
-package com.example.couscousapp;
+package com.example.couscousapp.api;
+
+import com.example.couscousapp.json_model.Content;
+import com.example.couscousapp.json_model.Data;
 
 import java.util.List;
 
@@ -10,7 +13,9 @@ public interface JsonPlaceHolderApi {
     @GET("contents")
     Call<List<Content>> getContents();
 
-    @GET("data?listLenght=50")
+    @GET("data?listLength=50")
     Call<List<Data>> getData();
+
+    // Todo: @POST
 
 }

@@ -1,4 +1,4 @@
-package com.example.couscousapp;
+package com.example.couscousapp.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,18 +11,21 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.couscousapp.R;
+import com.example.couscousapp.json_model.Data;
+
 import java.util.List;
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder>{
 
     private Context context;
-    private List<Data> data;
+    private List<Data> dataList;
     private ContentAdapter horizontalAdapter;
     private RecyclerView.RecycledViewPool recycledViewPool;
 
     public HomeAdapter(List<Data> data, Context context) {
 
-        this.data = data;
+        this.dataList = data;
         this.context = context;
 
         recycledViewPool = new RecyclerView.RecycledViewPool();
@@ -43,9 +46,9 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
     @Override
     public void onBindViewHolder(@NonNull HomeViewHolder holder, final int position) {
 
-        holder.textViewCategory.setText(data.get(position).getCategory());
+        holder.textViewCategory.setText(dataList.get(position).getCategory());
 
-        horizontalAdapter = new ContentAdapter(data.get(position).getList(), context);
+        horizontalAdapter = new ContentAdapter(dataList.get(position).getList(), context);
         holder.recyclerViewHorizontal.setAdapter(horizontalAdapter);
 
         holder.recyclerViewHorizontal.setRecycledViewPool(recycledViewPool);
@@ -56,7 +59,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
 
     @Override
     public int getItemCount() {
-        return data.size();
+        return dataList.size();
 
     }
 

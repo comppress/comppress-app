@@ -9,7 +9,8 @@
         android:id="@+id/tb_container_reader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#FFFFFF">
+        android:layout_gravity="start|top"
+        android:background="@color/colorPrimaryDark">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/tb_reader"
@@ -21,8 +22,6 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -31,7 +30,7 @@
         <WebView
             android:id="@+id/reader_webView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
 
     </RelativeLayout>
 
@@ -41,6 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
         android:layout_margin="16dp"
+        android:onClick="withRatingBar"
         app:backgroundTint="#FFFFFF"
         app:fabSize="normal"
         app:srcCompat="@drawable/grade_24px"
