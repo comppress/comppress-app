@@ -153,6 +153,8 @@ public class ReaderActivity extends AppCompatActivity {
                         .baseUrl(getResources().getString(R.string.base_url))
                         .addConverterFactory(GsonConverterFactory.create())
                         .build();
+
+                //Todo WIP
                 JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
                 Rating rating = new Rating();
                 rating.setCredibility((int) ratingBar1.getRating());
