@@ -3,15 +3,17 @@
     <string name="label_reader">Reader View</string>
     <string name="content_category">Content Category</string>
     <string name="base_url">http://46.101.203.225:8080/</string>
-    <string name="hint_username">Username</string>
-    <string name="hint_password">Password</string>
-    <string name="button_cancel">Cancel</string>
-    <string name="button_login">Login</string>
-    <string name="button_submit">Submit</string>
+    <string name="hint_username">Benutzername</string>
+    <string name="hint_password">Passwort</string>
+    <string name="button_cancel">Abbrechen</string>
+    <string name="button_login">Einloggen</string>
+    <string name="button_submit">Bestätigen</string>
     <string name="search_title">Suche</string>
     <string name="customize_title">Darstellung anpassen</string>
     <string name="rate_title">Bewerten</string>
     <string name="comment_title">Kommentieren</string>
     <string name="favorite_title">Zu Favoriten hinzufügen</string>
     <string name="browser_title">Im Browser öffnen</string>
+    <string name="rating_criterion_1">Ratingkriterium 1</string>
+    <string name="rating_criterion_2">Ratingkriterium 2</string>
 </resources>

@@ -22,9 +22,23 @@ import android.widget.RatingBar;
 import android.widget.Toast;
 
 import com.example.couscousapp.R;
+import com.example.couscousapp.api.JsonPlaceHolderApi;
+import com.example.couscousapp.json_model.Data;
+import com.example.couscousapp.json_model.Rating;
+import com.example.couscousapp.json_model.RatingPojo;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class ReaderActivity extends AppCompatActivity {
+
+    private static final String TAG = "ReaderActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -128,16 +142,56 @@ public class ReaderActivity extends AppCompatActivity {
         final RatingBar ratingBar2 = dialogLayout.findViewById(R.id.ratingBar2);
         final Integer articleId = getIntent().getIntExtra("article_id", -1);
         builder.setView(dialogLayout);
-        builder.setPositiveButton("Submit", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("Bestätigen", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 Toast.makeText(getApplicationContext(), "Bewertung 1: " + ratingBar1.getRating() +
-                        "\n Bewertung 2:" + ratingBar2.getRating() + "\n Artikel ID:" + articleId, Toast.LENGTH_SHORT).show();
+                        "\n Bewertung 2: " + ratingBar2.getRating() + "\n Artikel ID:" + articleId, Toast.LENGTH_SHORT).show();
+
+                // Rating in Datenbank reinschreiben
+                Retrofit retrofit = new Retrofit.Builder()
+                        .baseUrl(getResources().getString(R.string.base_url))
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .build();
+                JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
+                Rating rating = new Rating();
+                rating.setCredibility((int) ratingBar1.getRating());
+                rating.setNeutrality((int) ratingBar2.getRating());
+                RatingPojo ratingPojo = new RatingPojo(rating);
+                apiCallData(jsonPlaceHolderApi, ratingPojo);
+            }
+        });
+
+        builder.setNegativeButton("Abbrechen", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Log.i("Info", "Bewertung abgebrochen");
             }
         });
         builder.show();
     }
 
+    public void apiCallData(JsonPlaceHolderApi jsonPlaceHolderApi, RatingPojo ratingPojo){
+
+        Call<Void> call = jsonPlaceHolderApi.getRating(ratingPojo);
+        // Cant run this on the UI Thread, Retrofit runs it for us on a background thread
+        call.enqueue(new Callback<Void>() {
+
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if(!response.isSuccessful()){
+                    Log.i(TAG,"apiCallData return Code != 200");
+                    return;
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Log.e(TAG,"apiCallData: ", t);
+            }
+        });
+
+    }
 /*    public void onClickSubmitButton(View view) {
         LayoutInflater inflater = getLayoutInflater();
         View dialogLayout = inflater.inflate(R.layout.dialog_rating, null);

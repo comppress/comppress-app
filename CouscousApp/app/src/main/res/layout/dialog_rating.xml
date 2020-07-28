@@ -4,7 +4,18 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-       <RatingBar
+
+    <TextView
+        android:id="@+id/ratingCriterion1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingTop="20dp"
+        android:paddingRight="20dp"
+        android:text="@string/rating_criterion_1"
+        android:textSize="24sp" />
+
+    <RatingBar
             android:id="@+id/ratingBar1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -12,7 +23,17 @@
             android:numStars="5"
             android:stepSize="1" />
 
-        <RatingBar
+    <TextView
+        android:id="@+id/ratingCriterion2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingTop="20dp"
+        android:paddingRight="20dp"
+        android:text="@string/rating_criterion_2"
+        android:textSize="24sp" />
+
+    <RatingBar
             android:id="@+id/ratingBar2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
