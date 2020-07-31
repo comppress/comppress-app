@@ -157,9 +157,12 @@ public class ReaderActivity extends AppCompatActivity {
                 //Todo WIP
                 JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
                 Rating rating = new Rating();
+                rating.setContentId(articleId);
                 rating.setCredibility((int) ratingBar1.getRating());
                 rating.setNeutrality((int) ratingBar2.getRating());
-                RatingPojo ratingPojo = new RatingPojo(rating);
+                RatingPojo ratingPojo = new RatingPojo();
+                ratingPojo.setRating(rating);
+                // Return type void
                 apiCallData(jsonPlaceHolderApi, ratingPojo);
             }
         });
