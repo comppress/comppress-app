@@ -4,6 +4,15 @@ public class ContentPojo {
 
     private Content content;
     private String source;
+    private Float rating;
+
+    public void setRating(Float rating) {
+        this.rating = rating;
+    }
+
+    public Float getRating() {
+        return rating;
+    }
 
     public ContentPojo(Content content) {
         this.content = content;
