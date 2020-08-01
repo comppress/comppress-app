@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void apiCallData(JsonPlaceHolderApi jsonPlaceHolderApi){
 
-        Call<List<Data>> call = jsonPlaceHolderApi.getData();
+        Call<List<Data>> call = jsonPlaceHolderApi.getRatedData();
         // Cant run this on the UI Thread, Retrofit runs it for us on a background thread
         call.enqueue(new Callback<List<Data>>() {
 
