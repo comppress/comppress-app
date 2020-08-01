@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -73,7 +74,7 @@ public class Content {
         return description;
     }
 
-    public CharSequence getCreationDate() {
+    public String getCreationDate() {
         if (creationDate == null) {
             Log.i("Info", "Creation date of content is null");
             return "Date null";
@@ -88,8 +89,15 @@ public class Content {
             e.printStackTrace();
         }
         long now = System.currentTimeMillis();
-        CharSequence parsedDate = DateUtils.getRelativeTimeSpanString(milliseconds, now, DateUtils.WEEK_IN_MILLIS);
-        return parsedDate;
+        long diff = now-milliseconds;
+        long format = 0;
+        if (diff > DateUtils.WEEK_IN_MILLIS) {
+            format = DateUtils.WEEK_IN_MILLIS;
+        } else if (diff <= DateUtils.WEEK_IN_MILLIS) {
+            format = DateUtils.DAY_IN_MILLIS;
+        }
+        CharSequence parsedDate = DateUtils.getRelativeTimeSpanString(milliseconds, now, format);
+        return parsedDate.toString();
     }
 
     public String getCategory() {

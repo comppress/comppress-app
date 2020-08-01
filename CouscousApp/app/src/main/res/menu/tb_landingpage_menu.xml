@@ -10,5 +10,6 @@
         android:id="@+id/filter"
         android:icon="@drawable/equalizer"
         android:title="@string/customize_title"
-        app:showAsAction="always" />
+        app:showAsAction="always"/>
+
 </menu>

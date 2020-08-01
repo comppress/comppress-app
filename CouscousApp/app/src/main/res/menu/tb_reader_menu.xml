@@ -15,7 +15,7 @@
         android:id="@+id/favorite"
         android:icon="@drawable/favorite_border_24px"
         android:title="@string/favorite_title"
-        app:showAsAction="never" />
+        app:showAsAction="never"/>
 
     <item android:id="@+id/browser"
         android:title="@string/browser_title"
