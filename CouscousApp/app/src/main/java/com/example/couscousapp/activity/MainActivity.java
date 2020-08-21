@@ -1,7 +1,10 @@
 package com.example.couscousapp.activity;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -12,11 +15,15 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.Toast;
+
+import androidx.navigation.ui.AppBarConfiguration;
 
 import com.example.couscousapp.adapter.HomeAdapter;
 import com.example.couscousapp.R;
 import com.example.couscousapp.api.JsonPlaceHolderApi;
 import com.example.couscousapp.json_model.Data;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +45,9 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
+    private DrawerLayout drawer;
+    private ActionBarDrawerToggle aBarDrawer;
+    private NavigationView navView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +57,33 @@ public class MainActivity extends AppCompatActivity {
         Toolbar tbLandingPage = (Toolbar) findViewById(R.id.tb_landingpage);
         setSupportActionBar(tbLandingPage);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        //nav drawer
+        drawer = findViewById(R.id.drawer_layout);
+        aBarDrawer = new ActionBarDrawerToggle(this, drawer,R.string.Open, R.string.Close);
+        drawer.addDrawerListener(aBarDrawer);
+        aBarDrawer.syncState();
+        navView = findViewById(R.id.navigation);
+
+        navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id = item.getItemId();
+                switch(id)
+                {
+                    case R.id.login_drawer:
+                        Toast.makeText(MainActivity.this, "Einloggen",Toast.LENGTH_SHORT).show();break;
+                    case R.id.settings_drawer:
+                        Toast.makeText(MainActivity.this, "Einstellungen",Toast.LENGTH_SHORT).show();break;
+                    case R.id.donate_drawer:
+                        Toast.makeText(MainActivity.this, "Spenden", Toast.LENGTH_SHORT).show();break;
+                    default:
+                        return true;
+                }
+                return true;
+            }
+        });
 
         dataList = new ArrayList<>();
 
@@ -66,6 +102,9 @@ public class MainActivity extends AppCompatActivity {
                 .baseUrl(getResources().getString(R.string.base_url))
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+
+//Todo        AppBarConfiguration appBarConfiguration =
+//                new AppBarConfiguration.Builder(navController.getGraph()).build();
 
         JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
 
@@ -96,6 +135,8 @@ public class MainActivity extends AppCompatActivity {
             default:
                 // If we got here, the user's action was not recognized.
                 // Invoke the superclass to handle it.
+                if(aBarDrawer.onOptionsItemSelected(item))
+                    return true;
                 return super.onOptionsItemSelected(item);
 
         }
