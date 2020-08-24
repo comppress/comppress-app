@@ -5,6 +5,8 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,14 +16,12 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ProgressBar;
 import android.widget.Toast;
-
-import androidx.navigation.ui.AppBarConfiguration;
 
 import com.example.couscousapp.adapter.HomeAdapter;
 import com.example.couscousapp.R;
 import com.example.couscousapp.api.JsonPlaceHolderApi;
+import com.example.couscousapp.fragments.ContentBest;
 import com.example.couscousapp.json_model.Data;
 import com.google.android.material.navigation.NavigationView;
 
@@ -38,13 +38,13 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
 
-    private List<Data> dataList;
+    /*private List<Data> dataList;*/
 
     //android views
-    private ProgressBar progressBar;
-    private RecyclerView recyclerView;
+    /*private ProgressBar progressBar;
+    private RecyclerView recyclerView;*//*
     private RecyclerView.Adapter adapter;
-    private RecyclerView.LayoutManager layoutManager;
+    private RecyclerView.LayoutManager layoutManager;*/
     private DrawerLayout drawer;
     private ActionBarDrawerToggle aBarDrawer;
     private NavigationView navView;
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_landing_page);
+        setContentView(R.layout.activity_landing_page_f);
 
         Toolbar tbLandingPage = (Toolbar) findViewById(R.id.tb_landingpage);
         setSupportActionBar(tbLandingPage);
@@ -85,20 +85,20 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        dataList = new ArrayList<>();
+        /*dataList = new ArrayList<>();*/
 
-        adapter = new HomeAdapter(dataList, this);
+        /*adapter = new HomeAdapter(dataList, this);
 
-        layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);*/
 
-        recyclerView = findViewById(R.id.rv_landingpage);
+        /*recyclerView = findViewById(R.id.rv_landingpage);
         progressBar = findViewById(R.id.pb_landingpage);
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(adapter);
+        recyclerView.setAdapter(adapter);*/
 
-        Retrofit retrofit = new Retrofit.Builder()
+        /*Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(getResources().getString(R.string.base_url))
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
@@ -108,7 +108,19 @@ public class MainActivity extends AppCompatActivity {
 
         JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
 
-        apiCallData(jsonPlaceHolderApi);
+        apiCallData(jsonPlaceHolderApi);*/
+
+        //fragment management
+        ContentBest fragmentBest = new ContentBest();
+        /*ContentNew fragmentNew = new ContentNew();*/
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        fragmentTransaction.add(R.id.fragment_placeholder, fragmentBest);
+        fragmentTransaction.commit();
+
+
 
     }
 
@@ -142,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void apiCallData(JsonPlaceHolderApi jsonPlaceHolderApi){
+    /*public void apiCallData(JsonPlaceHolderApi jsonPlaceHolderApi){
 
         Call<List<Data>> call = jsonPlaceHolderApi.getRatedData();
         // Cant run this on the UI Thread, Retrofit runs it for us on a background thread
@@ -174,5 +186,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-    }
+    }*/
 }
