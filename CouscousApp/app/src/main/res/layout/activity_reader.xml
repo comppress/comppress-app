@@ -22,17 +22,11 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-        <WebView
+        <com.example.couscousapp.views.NestedWebView
             android:id="@+id/reader_webView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-    </RelativeLayout>
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floating_action_button"
