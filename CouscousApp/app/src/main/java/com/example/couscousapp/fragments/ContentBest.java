@@ -5,12 +5,14 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.example.couscousapp.R;
 import com.example.couscousapp.adapter.HomeAdapter;
@@ -29,13 +31,14 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import static android.content.ContentValues.TAG;
 
 
-public class ContentBest extends Fragment {
+public class ContentBest<val> extends Fragment {
 
     private ProgressBar progressBar;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
     private List<Data> dataList;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -69,6 +72,18 @@ public class ContentBest extends Fragment {
 
         apiCallData(jsonPlaceHolderApi);
 
+        swipeRefreshLayout = rootView.findViewById(R.id.swipe_refresh_layout);
+        swipeRefreshLayout.setOnRefreshListener(
+                new SwipeRefreshLayout.OnRefreshListener() {
+                    @Override
+                    public void onRefresh() {
+                        Log.i("Info", "onRefresh called from SwipeRefreshLayout");
+                        // This method performs the actual data-refresh operation.
+                        // The method calls setRefreshing(false) when it's finished.
+                        //Todo myUpdateOperation();
+                        }
+                }
+        );
         return rootView;
     }
 
@@ -76,13 +91,13 @@ public class ContentBest extends Fragment {
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
 
-
-
             }
 
     public ContentBest() {
         // Required empty public constructor
     }
+
+
 
     public void apiCallData(JsonPlaceHolderApi jsonPlaceHolderApi){
 

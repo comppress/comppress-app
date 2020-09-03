@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -119,6 +120,7 @@ public class MainActivity extends AppCompatActivity {
 
         fragmentTransaction.add(R.id.fragment_placeholder, fragmentBest);
         fragmentTransaction.commit();
+
 
 
 
