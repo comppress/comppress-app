@@ -140,13 +140,15 @@ public class ReaderActivity extends AppCompatActivity {
         View dialogLayout = inflater.inflate(R.layout.dialog_rating, null);
         final RatingBar ratingBar1 = dialogLayout.findViewById(R.id.ratingBar1);
         final RatingBar ratingBar2 = dialogLayout.findViewById(R.id.ratingBar2);
+        final RatingBar ratingBar3 = dialogLayout.findViewById(R.id.ratingBar3);
         final Integer articleId = getIntent().getIntExtra("article_id", -1);
         builder.setView(dialogLayout);
         builder.setPositiveButton("Bestätigen", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 Toast.makeText(getApplicationContext(), "Bewertung 1: " + ratingBar1.getRating() +
-                        "\n Bewertung 2: " + ratingBar2.getRating() + "\n Artikel ID:" + articleId, Toast.LENGTH_SHORT).show();
+                        "\n Bewertung 2: " + ratingBar2.getRating() +
+                        "\n Bewertung 3: " + ratingBar3.getRating() + "\n Artikel ID:" + articleId, Toast.LENGTH_SHORT).show();
 
                 // Rating in Datenbank reinschreiben
                 Retrofit retrofit = new Retrofit.Builder()
@@ -160,6 +162,7 @@ public class ReaderActivity extends AppCompatActivity {
                 rating.setContentId(articleId);
                 rating.setCredibility((int) ratingBar1.getRating());
                 rating.setNeutrality((int) ratingBar2.getRating());
+                rating.setInformativity((int) ratingBar3.getRating());
                 RatingPojo ratingPojo = new RatingPojo();
                 ratingPojo.setRating(rating);
                 // Return type void

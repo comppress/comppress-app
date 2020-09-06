@@ -16,6 +16,7 @@
     <string name="browser_title">Im Browser öffnen</string>
     <string name="rating_criterion_1">Ratingkriterium 1</string>
     <string name="rating_criterion_2">Ratingkriterium 2</string>
+    <string name="rating_criterion_3">Ratingkriterium 3</string>
     <string name="Open">\"Öffnen\"</string>
     <string name="Close">\"Schließen\"</string>
     <!-- TODO: Remove or change this placeholder text -->

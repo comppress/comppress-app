@@ -11,5 +11,10 @@
         android:icon="@drawable/equalizer"
         android:title="@string/customize_title"
         app:showAsAction="always"/>
+    <item
+        android:id="@+id/temp"
+        android:icon="@drawable/equalizer"
+        android:title="@string/customize_title"
+        app:showAsAction="always"/>
 
 </menu>

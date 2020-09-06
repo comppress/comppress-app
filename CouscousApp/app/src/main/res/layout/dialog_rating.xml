@@ -42,6 +42,25 @@
         android:stepSize="1"
         android:theme="@style/RatingBar"/>
 
+    <TextView
+        android:id="@+id/ratingCriterion3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingTop="20dp"
+        android:paddingRight="20dp"
+        android:text="@string/rating_criterion_3"
+        android:textSize="24sp" />
+
+    <RatingBar
+        android:id="@+id/ratingBar3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:numStars="5"
+        android:stepSize="1"
+        android:theme="@style/RatingBar"/>
+
 <!--        <com.google.android.material.button.MaterialButton
             android:id="@+id/login_button"
             android:layout_width="wrap_content"

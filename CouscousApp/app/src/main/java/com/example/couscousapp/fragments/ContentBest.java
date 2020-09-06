@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.couscousapp.R;
 import com.example.couscousapp.adapter.HomeAdapter;
+import com.example.couscousapp.api.ApiRepository;
 import com.example.couscousapp.api.JsonPlaceHolderApi;
 import com.example.couscousapp.json_model.Data;
 
@@ -60,17 +61,11 @@ public class ContentBest<val> extends Fragment {
         recyclerView.setAdapter(adapter);
 
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(getResources().getString(R.string.base_url))
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
 //Todo        AppBarConfiguration appBarConfiguration =
 //                new AppBarConfiguration.Builder(navController.getGraph()).build();
 
-        JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
-
-        apiCallData(jsonPlaceHolderApi);
+        final ApiRepository apiRepository = new ApiRepository(getResources().getString(R.string.base_url));
+        apiRepository.apiCallGetRatedData(progressBar, adapter, dataList);
 
         swipeRefreshLayout = rootView.findViewById(R.id.swipe_refresh_layout);
         swipeRefreshLayout.setOnRefreshListener(
@@ -81,6 +76,8 @@ public class ContentBest<val> extends Fragment {
                         // This method performs the actual data-refresh operation.
                         // The method calls setRefreshing(false) when it's finished.
                         //Todo myUpdateOperation();
+                        //ApiRepository apiRepository = new ApiRepository(getResources().getString(R.string.base_url));
+                        apiRepository.apiCallGetRatedData(progressBar, adapter, dataList);
                         }
                 }
         );
@@ -96,41 +93,4 @@ public class ContentBest<val> extends Fragment {
     public ContentBest() {
         // Required empty public constructor
     }
-
-
-
-    public void apiCallData(JsonPlaceHolderApi jsonPlaceHolderApi){
-
-        Call<List<Data>> call = jsonPlaceHolderApi.getRatedData();
-        // Cant run this on the UI Thread, Retrofit runs it for us on a background thread
-        call.enqueue(new Callback<List<Data>>() {
-
-            @Override
-            public void onResponse(Call<List<Data>> call, Response<List<Data>> response) {
-                if(!response.isSuccessful()){
-                    Log.i(TAG,"apiCallData return Code != 200");
-                    return;
-                }
-
-                progressBar.setVisibility(View.GONE);
-
-                List<Data> responseDataList = response.body();
-
-                for (Data data : responseDataList) {
-
-                    dataList.add(data);
-                }
-                adapter.notifyDataSetChanged();
-
-            }
-
-            @Override
-            public void onFailure(Call<List<Data>> call, Throwable t) {
-                progressBar.setVisibility(View.GONE);
-                Log.e(TAG,"apiCallData: ", t);
-            }
-        });
-
-    }
-
 }
