@@ -6,7 +6,6 @@ import android.widget.ProgressBar;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.couscousapp.R;
 import com.example.couscousapp.json_model.Data;
 
 import java.util.List;
@@ -34,9 +33,15 @@ public class ApiRepository {
         jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
     }
 
-    public void apiCallGetRatedData(final ProgressBar progressBar, final RecyclerView.Adapter adapter, final List<Data> dataList) {
-
-        Call<List<Data>> call = jsonPlaceHolderApi.getRatedData();
+    public void apiCallGetNews(final ProgressBar progressBar, final RecyclerView.Adapter adapter, final List<Data> dataList, String apiCallString) {
+        Call<List<Data>> call = null;
+        if (apiCallString == "ratedNews") {
+            call = jsonPlaceHolderApi.ratedNews();
+            Log.i("Info", "BestRated");
+        } if (apiCallString == "latestNews") {
+            call = jsonPlaceHolderApi.latestNews();
+            Log.i("Info", "Latest");
+        }
         // Cant run this on the UI Thread, Retrofit runs it for us on a background thread
         call.enqueue(new Callback<List<Data>>() {
 

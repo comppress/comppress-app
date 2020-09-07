@@ -12,24 +12,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.example.couscousapp.R;
 import com.example.couscousapp.adapter.HomeAdapter;
 import com.example.couscousapp.api.ApiRepository;
-import com.example.couscousapp.api.JsonPlaceHolderApi;
 import com.example.couscousapp.json_model.Data;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-
-import static android.content.ContentValues.TAG;
 
 
 public class ContentBest<val> extends Fragment {
@@ -65,7 +55,7 @@ public class ContentBest<val> extends Fragment {
 //                new AppBarConfiguration.Builder(navController.getGraph()).build();
 
         final ApiRepository apiRepository = new ApiRepository(getResources().getString(R.string.base_url));
-        apiRepository.apiCallGetRatedData(progressBar, adapter, dataList);
+        apiRepository.apiCallGetNews(progressBar, adapter, dataList, "ratedNews");
 
         swipeRefreshLayout = rootView.findViewById(R.id.swipe_refresh_layout);
         swipeRefreshLayout.setOnRefreshListener(
@@ -77,7 +67,7 @@ public class ContentBest<val> extends Fragment {
                         // The method calls setRefreshing(false) when it's finished.
                         //Todo myUpdateOperation();
                         //ApiRepository apiRepository = new ApiRepository(getResources().getString(R.string.base_url));
-                        apiRepository.apiCallGetRatedData(progressBar, adapter, dataList);
+                        apiRepository.apiCallGetNews(progressBar, adapter, dataList,"ratedNews");
                         }
                 }
         );

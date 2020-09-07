@@ -2,6 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/temp"
+        android:icon="@drawable/filter_list_24px"
+        android:title="@string/customize_title"
+        app:showAsAction="always"/>
+    <item
         android:id="@+id/sort"
         android:icon="@drawable/search_24px"
         android:title="@string/search_title"
@@ -11,10 +16,4 @@
         android:icon="@drawable/equalizer"
         android:title="@string/customize_title"
         app:showAsAction="always"/>
-    <item
-        android:id="@+id/temp"
-        android:icon="@drawable/equalizer"
-        android:title="@string/customize_title"
-        app:showAsAction="always"/>
-
 </menu>

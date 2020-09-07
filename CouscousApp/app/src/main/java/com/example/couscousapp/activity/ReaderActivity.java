@@ -133,7 +133,6 @@ public class ReaderActivity extends AppCompatActivity {
 
 
     public void withRatingBar(View view) {
-
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
         builder.setTitle("Bewertung");

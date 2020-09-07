@@ -23,6 +23,7 @@ import com.example.couscousapp.adapter.HomeAdapter;
 import com.example.couscousapp.R;
 import com.example.couscousapp.api.JsonPlaceHolderApi;
 import com.example.couscousapp.fragments.ContentBest;
+import com.example.couscousapp.fragments.ContentNew;
 import com.example.couscousapp.json_model.Data;
 import com.google.android.material.navigation.NavigationView;
 
@@ -49,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout drawer;
     private ActionBarDrawerToggle aBarDrawer;
     private NavigationView navView;
+    private FragmentManager fragmentManager;
+    private FragmentTransaction fragmentTransaction;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,16 +116,13 @@ public class MainActivity extends AppCompatActivity {
 
         //fragment management
         ContentBest fragmentBest = new ContentBest();
-        /*ContentNew fragmentNew = new ContentNew();*/
+        //ContentNew fragmentNew = new ContentNew();
 
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentManager = getSupportFragmentManager();
+        fragmentTransaction = fragmentManager.beginTransaction();
 
         fragmentTransaction.add(R.id.fragment_placeholder, fragmentBest);
         fragmentTransaction.commit();
-
-
-
 
     }
 
@@ -144,6 +144,13 @@ public class MainActivity extends AppCompatActivity {
             case R.id.filter:
                 // User chose the "Filter" item, show the app settings UI...
                 Log.i("Info", "Button 'Filter' pressed");
+                return true;
+
+            case R.id.temp:
+                // User chose the "Filter" item, show the app settings UI...
+                Log.i("Info", "Button 'Temp' pressed");
+                ContentNew fragmentNew = new ContentNew();
+                fragmentTransaction.replace(R.id.fragment_placeholder, fragmentNew);
                 return true;
 
             default:
