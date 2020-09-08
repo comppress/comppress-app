@@ -22,6 +22,7 @@ import android.widget.RatingBar;
 import android.widget.Toast;
 
 import com.example.couscousapp.R;
+import com.example.couscousapp.api.ApiRepository;
 import com.example.couscousapp.api.JsonPlaceHolderApi;
 import com.example.couscousapp.json_model.Data;
 import com.example.couscousapp.json_model.Rating;
@@ -56,16 +57,6 @@ public class ReaderActivity extends AppCompatActivity {
         webView.getSettings().setJavaScriptEnabled(true);
         webView.setWebViewClient(new WebViewClient());
         webView.loadUrl(getIntent().getStringExtra("external_url"));
-
-/*        FloatingActionButton fab = findViewById(R.id.floating_action_button);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                confirmDialog();
-            }
-        });*/
-
-
     }
 
     @Override
@@ -78,12 +69,6 @@ public class ReaderActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            /*case R.id.rate:
-                // User chose the "Sort" item, show the app settings UI...
-                Log.i("Info", "Button 'Rate' pressed");
-                confirmDialog();
-                return true;*/
-
             case R.id.comment:
                 // User chose the "Comment" item, show the app settings UI...
                 Log.i("Info", "Button 'Comment' pressed");
@@ -108,29 +93,6 @@ public class ReaderActivity extends AppCompatActivity {
 
         }
     }
-
-//    public void confirmDialog() {
-//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-//        builder.setTitle("Beispiel: ConfirmDialog Rating");
-//        builder.setMessage("Möchten Sie diesen Artikel als 'Fake News' deklarieren?");
-//        builder.setCancelable(false);
-//        builder.setPositiveButton("Lügenpresse!", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//                 Log.i("Info", "Danke Merkel!");
-//            }
-//        });
-//
-//        builder.setNegativeButton("Nein", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//                Log.i("Info", "Artikel ist glaubwürdig.");
-//            }
-//        });
-//
-//        builder.show();
-//    }
-
 
     public void withRatingBar(View view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -165,7 +127,8 @@ public class ReaderActivity extends AppCompatActivity {
                 RatingPojo ratingPojo = new RatingPojo();
                 ratingPojo.setRating(rating);
                 // Return type void
-                apiCallData(jsonPlaceHolderApi, ratingPojo);
+                final ApiRepository apiRepository = new ApiRepository(getResources().getString(R.string.base_url));
+                apiRepository.apiCallContent(jsonPlaceHolderApi, ratingPojo);
             }
         });
 
@@ -177,34 +140,4 @@ public class ReaderActivity extends AppCompatActivity {
         });
         builder.show();
     }
-
-    public void apiCallData(JsonPlaceHolderApi jsonPlaceHolderApi, RatingPojo ratingPojo){
-
-        Call<Void> call = jsonPlaceHolderApi.getRating(ratingPojo);
-        // Cant run this on the UI Thread, Retrofit runs it for us on a background thread
-        call.enqueue(new Callback<Void>() {
-
-            @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
-                if(!response.isSuccessful()){
-                    Log.i(TAG,"apiCallData return Code != 200");
-                    return;
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Void> call, Throwable t) {
-                Log.e(TAG,"apiCallData: ", t);
-            }
-        });
-
-    }
-/*    public void onClickSubmitButton(View view) {
-        LayoutInflater inflater = getLayoutInflater();
-        View dialogLayout = inflater.inflate(R.layout.dialog_rating, null);
-        RatingBar ratingBar1 = dialogLayout.findViewById(R.id.ratingBar1);
-        RatingBar ratingBar2 = dialogLayout.findViewById(R.id.ratingBar2);
-        Integer articleId = getIntent().getIntExtra("article_id", -1);
-        Toast.makeText(getApplicationContext(), "Bewertung 1: " + ratingBar1.getRating() + "\n Bewertung 2:" + ratingBar2.getRating(), Toast.LENGTH_SHORT).show();
-    }*/
 }

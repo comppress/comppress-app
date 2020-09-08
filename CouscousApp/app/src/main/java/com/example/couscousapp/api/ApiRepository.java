@@ -7,6 +7,7 @@ import android.widget.ProgressBar;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.couscousapp.json_model.Data;
+import com.example.couscousapp.json_model.RatingPojo;
 
 import java.util.List;
 
@@ -38,7 +39,7 @@ public class ApiRepository {
         if (apiCallString == "ratedNews") {
             call = jsonPlaceHolderApi.ratedNews();
             Log.i("Info", "BestRated");
-        } if (apiCallString == "latestNews") {
+        } else if (apiCallString == "latestNews") {
             call = jsonPlaceHolderApi.latestNews();
             Log.i("Info", "Latest");
         }
@@ -70,5 +71,27 @@ public class ApiRepository {
                 Log.e(TAG, "apiCallData: ", t);
             }
         });
+    }
+
+    public void apiCallContent(JsonPlaceHolderApi jsonPlaceHolderApi, RatingPojo ratingPojo){
+
+        Call<Void> call = jsonPlaceHolderApi.getRating(ratingPojo);
+        // Cant run this on the UI Thread, Retrofit runs it for us on a background thread
+        call.enqueue(new Callback<Void>() {
+
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if(!response.isSuccessful()){
+                    Log.i(TAG,"apiCallData return Code != 200");
+                    return;
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Log.e(TAG,"apiCallData: ", t);
+            }
+        });
+
     }
 }

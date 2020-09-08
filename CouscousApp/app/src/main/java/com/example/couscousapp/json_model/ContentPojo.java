@@ -11,6 +11,9 @@ public class ContentPojo {
     }
 
     public Float getRating() {
+        if (rating == null) {
+            rating = -1f;
+        }
         return rating;
     }
 

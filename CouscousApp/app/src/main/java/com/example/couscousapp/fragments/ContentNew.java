@@ -51,7 +51,8 @@ public class ContentNew<val> extends Fragment {
         recyclerView.setAdapter(adapter);
 
 
-//Todo working ContentNew fragment
+//Todo        AppBarConfiguration appBarConfiguration =
+//                new AppBarConfiguration.Builder(navController.getGraph()).build();
 
         final ApiRepository apiRepository = new ApiRepository(getResources().getString(R.string.base_url));
         apiRepository.apiCallGetNews(progressBar, adapter, dataList, "latestNews");

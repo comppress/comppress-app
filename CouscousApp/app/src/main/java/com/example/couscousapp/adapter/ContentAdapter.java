@@ -2,6 +2,7 @@ package com.example.couscousapp.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,8 +49,8 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ContentV
         holder.textViewTitle.setText(content.getTitle());
         holder.textViewCreationDate.setText(content.getCreationDate());
         holder.textViewSource.setText(contentPojo.getSource());
-        holder.textViewRating.setText(contentPojo.getRating().toString());
 
+        holder.textViewRating.setText(contentPojo.getRating().toString());
         Picasso.get().
                 load(content.getImageLink())
                 //.placeholder(context.getResources().getDrawable(R.drawable.default_image))

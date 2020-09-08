@@ -24,22 +24,16 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
     private RecyclerView.RecycledViewPool recycledViewPool;
 
     public HomeAdapter(List<Data> data, Context context) {
-
         this.dataList = data;
         this.context = context;
-
         recycledViewPool = new RecyclerView.RecycledViewPool();
-
     }
 
 
     @NonNull
     @Override
     public HomeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
         View theView = LayoutInflater.from(context).inflate(R.layout.row_layout_landingpage, parent, false);
-
-
         return new HomeViewHolder(theView);
     }
 
@@ -52,15 +46,12 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
         holder.recyclerViewHorizontal.setAdapter(horizontalAdapter);
 
         holder.recyclerViewHorizontal.setRecycledViewPool(recycledViewPool);
-
-
     }
 
 
     @Override
     public int getItemCount() {
         return dataList.size();
-
     }
 
 
@@ -73,20 +64,12 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
 
         public HomeViewHolder(View itemView) {
             super(itemView);
-
             recyclerViewHorizontal = itemView.findViewById(R.id.landingpage_recycler_view_horizontal);
             recyclerViewHorizontal.setHasFixedSize(true);
             recyclerViewHorizontal.setNestedScrollingEnabled(false);
             recyclerViewHorizontal.setLayoutManager(horizontalManager);
             recyclerViewHorizontal.setItemAnimator(new DefaultItemAnimator());
-
             textViewCategory = itemView.findViewById(R.id.text_view_category);
-
-
         }
-
-
     }
-
-
 }

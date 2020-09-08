@@ -5,12 +5,14 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -39,14 +41,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
-
-    /*private List<Data> dataList;*/
-
-    //android views
-    /*private ProgressBar progressBar;
-    private RecyclerView recyclerView;*//*
-    private RecyclerView.Adapter adapter;
-    private RecyclerView.LayoutManager layoutManager;*/
     private DrawerLayout drawer;
     private ActionBarDrawerToggle aBarDrawer;
     private NavigationView navView;
@@ -63,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        //nav drawer
+        // Nav drawer
         drawer = findViewById(R.id.drawer_layout);
         aBarDrawer = new ActionBarDrawerToggle(this, drawer,R.string.Open, R.string.Close);
         drawer.addDrawerListener(aBarDrawer);
@@ -89,32 +83,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        /*dataList = new ArrayList<>();*/
 
-        /*adapter = new HomeAdapter(dataList, this);
-
-        layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);*/
-
-        /*recyclerView = findViewById(R.id.rv_landingpage);
-        progressBar = findViewById(R.id.pb_landingpage);
-
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(adapter);*/
-
-        /*Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(getResources().getString(R.string.base_url))
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-//Todo        AppBarConfiguration appBarConfiguration =
-//                new AppBarConfiguration.Builder(navController.getGraph()).build();
-
-        JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
-
-        apiCallData(jsonPlaceHolderApi);*/
-
-        //fragment management
+        // Fragment management
         ContentBest fragmentBest = new ContentBest();
         //ContentNew fragmentNew = new ContentNew();
 
@@ -150,7 +120,8 @@ public class MainActivity extends AppCompatActivity {
                 // User chose the "Filter" item, show the app settings UI...
                 Log.i("Info", "Button 'Temp' pressed");
                 ContentNew fragmentNew = new ContentNew();
-                fragmentTransaction.replace(R.id.fragment_placeholder, fragmentNew);
+                // fragmentTransaction.replace(R.id.fragment_placeholder, fragmentNew);
+                fragmentManager.beginTransaction().replace(R.id.fragment_placeholder, fragmentNew).commit();
                 return true;
 
             default:
@@ -162,38 +133,4 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
-
-    /*public void apiCallData(JsonPlaceHolderApi jsonPlaceHolderApi){
-
-        Call<List<Data>> call = jsonPlaceHolderApi.getRatedData();
-        // Cant run this on the UI Thread, Retrofit runs it for us on a background thread
-        call.enqueue(new Callback<List<Data>>() {
-
-            @Override
-            public void onResponse(Call<List<Data>> call, Response<List<Data>> response) {
-                if(!response.isSuccessful()){
-                    Log.i(TAG,"apiCallData return Code != 200");
-                    return;
-                }
-
-                progressBar.setVisibility(View.GONE);
-
-                List<Data> responseDataList = response.body();
-
-                for (Data data : responseDataList) {
-
-                    dataList.add(data);
-                }
-                adapter.notifyDataSetChanged();
-
-            }
-
-            @Override
-            public void onFailure(Call<List<Data>> call, Throwable t) {
-                progressBar.setVisibility(View.GONE);
-                Log.e(TAG,"apiCallData: ", t);
-            }
-        });
-
-    }*/
 }
