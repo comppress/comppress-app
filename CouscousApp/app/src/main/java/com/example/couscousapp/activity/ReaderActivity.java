@@ -18,17 +18,23 @@ import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ExpandableListAdapter;
+import android.widget.ExpandableListView;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
 import com.example.couscousapp.R;
+import com.example.couscousapp.adapter.CustomExpandableListAdapter;
 import com.example.couscousapp.api.ApiRepository;
 import com.example.couscousapp.api.JsonPlaceHolderApi;
 import com.example.couscousapp.json_model.Data;
 import com.example.couscousapp.json_model.Rating;
 import com.example.couscousapp.json_model.RatingPojo;
+import com.example.couscousapp.views.ExpandableListDataPump;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import retrofit2.Call;
@@ -40,6 +46,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ReaderActivity extends AppCompatActivity {
 
     private static final String TAG = "ReaderActivity";
+    ExpandableListView myList;
+    ExpandableListAdapter myAdapter;
+    List<String> expandableListTitle;
+    HashMap<String, List<String>> expandableListDetail;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -139,5 +150,55 @@ public class ReaderActivity extends AppCompatActivity {
             }
         });
         builder.show();
+    }
+
+    public void expandableRating(View view) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Bewertung");
+        myList = new ExpandableListView(this);
+        expandableListDetail = ExpandableListDataPump.getData();
+        expandableListTitle = new ArrayList<String>(expandableListDetail.keySet());
+        myAdapter = new CustomExpandableListAdapter(this, expandableListTitle, expandableListDetail);
+        myList.setAdapter(myAdapter);
+        myList.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+
+            @Override
+            public void onGroupExpand(int groupPosition) {
+                Toast.makeText(getApplicationContext(),
+                        expandableListTitle.get(groupPosition) + " List Expanded.",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        myList.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
+
+            @Override
+            public void onGroupCollapse(int groupPosition) {
+                Toast.makeText(getApplicationContext(),
+                        expandableListTitle.get(groupPosition) + " List Collapsed.",
+                        Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        myList.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView parent, View v,
+                                        int groupPosition, int childPosition, long id) {
+                Toast.makeText(
+                        getApplicationContext(),
+                        expandableListTitle.get(groupPosition)
+                                + " -> "
+                                + expandableListDetail.get(
+                                expandableListTitle.get(groupPosition)).get(
+                                childPosition), Toast.LENGTH_SHORT
+                ).show();
+                return false;
+            }
+        });
+        myList.setAdapter(myAdapter);
+        builder.setView(myList);
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }
