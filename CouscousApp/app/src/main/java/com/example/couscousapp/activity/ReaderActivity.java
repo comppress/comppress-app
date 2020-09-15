@@ -153,6 +153,7 @@ public class ReaderActivity extends AppCompatActivity {
     }
 
     public void expandableRating(View view) {
+
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Bewertung");
         myList = new ExpandableListView(this);
@@ -190,15 +191,27 @@ public class ReaderActivity extends AppCompatActivity {
                         expandableListTitle.get(groupPosition)
                                 + " -> "
                                 + expandableListDetail.get(
-                                expandableListTitle.get(groupPosition)).get(
-                                childPosition), Toast.LENGTH_SHORT
-                ).show();
+                                expandableListTitle.get(groupPosition)).
+                                get(childPosition), Toast.LENGTH_SHORT
+                        ).show();
                 return false;
             }
         });
         myList.setAdapter(myAdapter);
         builder.setView(myList);
+        builder.setPositiveButton("Bewerten", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // User clicked OK button
+            }
+        });
+        builder.setNegativeButton("Abbrechen", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // User cancelled the dialog
+            }
+        });
+
         AlertDialog dialog = builder.create();
         dialog.show();
+
     }
 }

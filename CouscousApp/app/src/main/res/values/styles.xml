@@ -7,8 +7,13 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="RatingBar" parent="Theme.AppCompat">
+    <style name="RatingBarTop" parent="Theme.AppCompat">
         <item name="colorControlNormal">@color/colorPrimary</item>
-        <item name="colorControlActivated">@color/colorStar</item>
+        <item name="colorControlActivated">@color/colorStarTop</item>
+    </style>
+
+    <style name="RatingBarSub" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@color/colorPrimary</item>
+        <item name="colorControlActivated">@color/colorStarSub</item>
     </style>
 </resources>

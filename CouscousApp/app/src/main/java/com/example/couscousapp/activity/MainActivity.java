@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
     private NavigationView navView;
     private FragmentManager fragmentManager;
     private FragmentTransaction fragmentTransaction;
+    int fragmentFlag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
         switch (item.getItemId()) {
             case R.id.sort:
                 // User chose the "Sort" item, show the app settings UI...
@@ -117,11 +119,16 @@ public class MainActivity extends AppCompatActivity {
                 return true;
 
             case R.id.temp:
-                // User chose the "Filter" item, show the app settings UI...
+                // Switching between Fragments ContentBest & ContentNew
                 Log.i("Info", "Button 'Temp' pressed");
-                ContentNew fragmentNew = new ContentNew();
-                // fragmentTransaction.replace(R.id.fragment_placeholder, fragmentNew);
-                fragmentManager.beginTransaction().replace(R.id.fragment_placeholder, fragmentNew).commit();
+                if(fragmentFlag==0) {ContentNew fragmentNew = new ContentNew();
+                    fragmentManager.beginTransaction().replace(R.id.fragment_placeholder, fragmentNew).addToBackStack(null).commit();
+                    fragmentFlag = 1;
+                    Toast.makeText(this, "Sortierung: Neueste Artikel", Toast.LENGTH_LONG).show();}
+                else {ContentBest fragmentBest = new ContentBest();
+                    fragmentManager.beginTransaction().replace(R.id.fragment_placeholder, fragmentBest).addToBackStack(null).commit();
+                    fragmentFlag = 0;
+                    Toast.makeText(this, "Sortierung: Bestbewertete Artikel", Toast.LENGTH_LONG).show();}
                 return true;
 
             default:

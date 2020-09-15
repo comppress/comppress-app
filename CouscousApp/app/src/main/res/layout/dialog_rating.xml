@@ -25,7 +25,7 @@
             android:layout_gravity="center"
             android:numStars="5"
             android:stepSize="1"
-            android:theme="@style/RatingBar" />
+            android:theme="@style/RatingBarTop" />
 
         <TextView
             android:id="@+id/ratingCriterion2"
@@ -44,7 +44,7 @@
             android:layout_gravity="center"
             android:numStars="5"
             android:stepSize="1"
-            android:theme="@style/RatingBar" />
+            android:theme="@style/RatingBarTop" />
 
         <TextView
             android:id="@+id/ratingCriterion3"
@@ -63,7 +63,7 @@
             android:layout_gravity="center"
             android:numStars="5"
             android:stepSize="1"
-            android:theme="@style/RatingBar" />
+            android:theme="@style/RatingBarTop" />
 
         <!--        <com.google.android.material.button.MaterialButton
                 android:id="@+id/login_button"
