@@ -1,17 +1,17 @@
 package com.example.couscousapp.fragments;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.couscousapp.R;
 import com.example.couscousapp.adapter.HomeAdapter;
@@ -30,13 +30,11 @@ public class ContentBest<val> extends Fragment {
     private RecyclerView.LayoutManager layoutManager;
     private List<Data> dataList;
     private SwipeRefreshLayout swipeRefreshLayout;
+    private FragmentTransaction fragmentTransaction;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        /*return inflater.inflate(R.layout.fragment_content, container, false);*/
-        View rootView = inflater.inflate(R.layout.fragment_content, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        final View rootView = inflater.inflate(R.layout.fragment_content, container, false);
         recyclerView = rootView.findViewById(R.id.rv_landingpage);
         progressBar = rootView.findViewById(R.id.pb_landingpage);
 
@@ -45,11 +43,9 @@ public class ContentBest<val> extends Fragment {
 
         layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
 
-
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
-
 
 //Todo        AppBarConfiguration appBarConfiguration =
 //                new AppBarConfiguration.Builder(navController.getGraph()).build();
@@ -65,9 +61,7 @@ public class ContentBest<val> extends Fragment {
                         Log.i("Info", "onRefresh called from SwipeRefreshLayout");
                         // This method performs the actual data-refresh operation.
                         // The method calls setRefreshing(false) when it's finished.
-                        //Todo myUpdateOperation();
-                        //ApiRepository apiRepository = new ApiRepository(getResources().getString(R.string.base_url));
-                        apiRepository.apiCallGetNews(progressBar, adapter, dataList,"ratedNews");
+                        updateOperation();
                         }
                 }
         );
@@ -83,4 +77,13 @@ public class ContentBest<val> extends Fragment {
     public ContentBest() {
         // Required empty public constructor
     }
+
+    private void updateOperation(){
+        ContentBest fragmentBest = new ContentBest();
+        fragmentTransaction = getFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_placeholder, fragmentBest);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+    }
+
 }

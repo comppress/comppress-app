@@ -3,6 +3,7 @@ package com.example.couscousapp.fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -30,6 +31,7 @@ public class ContentNew<val> extends Fragment {
     private RecyclerView.LayoutManager layoutManager;
     private List<Data> dataList;
     private SwipeRefreshLayout swipeRefreshLayout;
+    private FragmentTransaction fragmentTransaction;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -65,9 +67,7 @@ public class ContentNew<val> extends Fragment {
                         Log.i("Info", "onRefresh called from SwipeRefreshLayout");
                         // This method performs the actual data-refresh operation.
                         // The method calls setRefreshing(false) when it's finished.
-                        //Todo myUpdateOperation();
-                        //ApiRepository apiRepository = new ApiRepository(getResources().getString(R.string.base_url));
-                        apiRepository.apiCallGetNews(progressBar, adapter, dataList,"latestNews");
+                        updateOperation();
                     }
                 }
         );
@@ -82,5 +82,13 @@ public class ContentNew<val> extends Fragment {
 
     public ContentNew() {
         // Required empty public constructor
+    }
+
+    private void updateOperation(){
+        ContentNew fragmentBest = new ContentNew();
+        fragmentTransaction = getFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_placeholder, fragmentBest);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
 }
