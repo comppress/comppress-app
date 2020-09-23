@@ -19,7 +19,21 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
     private Context context;
     private List<String> expandableListTitle;
     private HashMap<String, List<String>> expandableListDetail;
-    int[][] arr = new int[3][3];
+    private int[][] ratings = new int[3][4];
+    private ChildViewHolder childViewHolder;
+    private GroupViewHolder groupViewHolder;
+
+    public void setRatings(int[][] ratings) {
+        this.ratings = ratings;
+    }
+
+    public int getRatingPosition(int x, int y){
+        return this.ratings[x][y];
+    }
+
+    public int[][] getRatings() {
+        return ratings;
+    }
 
     public CustomExpandableListAdapter(Context context, List<String> expandableListTitle,
                                        HashMap<String, List<String>> expandableListDetail) {
@@ -32,6 +46,7 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
     public Object getChild(int listPosition, int expandedListPosition) {
         return this.expandableListDetail.get(this.expandableListTitle.get(listPosition))
                 .get(expandedListPosition);
+
     }
 
     @Override
@@ -74,33 +89,33 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
     public View getChildView(final int listPosition, final int expandedListPosition, boolean b, View view, ViewGroup viewGroup)
     {
         final String childText = (String)getChild(listPosition,expandedListPosition);
-        ViewHolder holder;
+        ChildViewHolder childViewHolder;
 
         if(view==null)
         {
             LayoutInflater inflater = (LayoutInflater)this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(R.layout.expandable_list_item, null);
 
-            holder = new ViewHolder(view);
-            view.setTag(holder);
+            childViewHolder = new ChildViewHolder(view);
+            view.setTag(childViewHolder);
         } else {
-            holder = (ViewHolder)view.getTag();
+            childViewHolder = (ChildViewHolder)view.getTag();
         }
 
-        holder = (ViewHolder)view.getTag();
+        childViewHolder = (ChildViewHolder)view.getTag();
 
-        holder.ratingbar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener()
+        childViewHolder.ratingbar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener()
         {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float v, boolean b)
             {
-                arr[listPosition][expandedListPosition] = (int) ratingBar.getRating();
+                ratings[listPosition][expandedListPosition+1] = (int) ratingBar.getRating();
             }
         });
 
-        holder.features.setText(childText);
-        holder.ratingbar.setTag(expandedListPosition);
-        holder.ratingbar.setRating(arr[listPosition][expandedListPosition]);
+        childViewHolder.features.setText(childText);
+        childViewHolder.ratingbar.setTag(expandedListPosition+1);
+        childViewHolder.ratingbar.setRating(ratings[listPosition][expandedListPosition+1]);
 
         return view;
     }
@@ -127,19 +142,49 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
     }
 
     @Override
-    public View getGroupView(int listPosition, boolean isExpanded,
-                             View convertView, ViewGroup parent) {
-        String listTitle = (String) getGroup(listPosition);
-        if (convertView == null) {
+    public View getGroupView(final int listPosition, boolean isExpanded, View view, ViewGroup parent)
+    {
+/*        String listTitle = (String) getGroup(listPosition);
+        if (view == null) {
             LayoutInflater layoutInflater = (LayoutInflater) this.context.
                     getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = layoutInflater.inflate(R.layout.expandable_list_group, null);
+            view = layoutInflater.inflate(R.layout.expandable_list_group, null);
         }
-        TextView listTitleTextView = (TextView) convertView
+        TextView listTitleTextView = (TextView) view
                 .findViewById(R.id.topCriterion);
         listTitleTextView.setTypeface(null, Typeface.BOLD);
         listTitleTextView.setText(listTitle);
-        return convertView;
+        return view;*/
+        final String listTitle = (String) getGroup(listPosition);
+        GroupViewHolder groupViewHolder;
+
+        if(view==null)
+        {
+            LayoutInflater inflater = (LayoutInflater)this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            view = inflater.inflate(R.layout.expandable_list_group, null);
+
+            groupViewHolder = new GroupViewHolder(view);
+            view.setTag(groupViewHolder);
+        } else {
+            groupViewHolder = (GroupViewHolder)view.getTag();
+        }
+
+        groupViewHolder = (GroupViewHolder)view.getTag();
+
+        groupViewHolder.ratingbar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener()
+        {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float v, boolean b)
+            {
+                ratings[listPosition][0] = (int) ratingBar.getRating();
+            }
+        });
+
+        groupViewHolder.features.setText(listTitle);
+        groupViewHolder.ratingbar.setTag(0);
+        groupViewHolder.ratingbar.setRating(ratings[listPosition][0]);
+
+        return view;
     }
 
     @Override
@@ -152,14 +197,25 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
         return true;
     }
 
-    public class ViewHolder
+    private static class ChildViewHolder
     {
         RatingBar ratingbar;
         TextView features;
 
-        public ViewHolder(View view) {
+        public ChildViewHolder(View view) {
             ratingbar = view.findViewById(R.id.subRatingBar);
             features = view.findViewById(R.id.subCriterion);
+        }
+    }
+
+    private static class GroupViewHolder
+    {
+        RatingBar ratingbar;
+        TextView features;
+
+        public GroupViewHolder(View view) {
+            ratingbar = view.findViewById(R.id.topRatingBar);
+            features = view.findViewById(R.id.topCriterion);
         }
     }
 }

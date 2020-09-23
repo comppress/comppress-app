@@ -14,6 +14,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -23,6 +24,7 @@ import android.widget.Toast;
 
 import com.example.couscousapp.adapter.HomeAdapter;
 import com.example.couscousapp.R;
+import com.example.couscousapp.api.ApiRepository;
 import com.example.couscousapp.api.JsonPlaceHolderApi;
 import com.example.couscousapp.fragments.ContentBest;
 import com.example.couscousapp.fragments.ContentNew;
@@ -41,6 +43,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
+    public static String userReference;
+
     private DrawerLayout drawer;
     private ActionBarDrawerToggle aBarDrawer;
     private NavigationView navView;
@@ -52,6 +56,19 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing_page_f);
+
+        // Set UserReference to android_id
+        // Lucas Emulator 877e72c2434bc673
+        userReference = Settings.Secure.getString(getApplication().getContentResolver(),
+                Settings.Secure.ANDROID_ID);
+        if(userReference.length() > 16){
+            Log.w("warn","User reference might fail to be written to db if longer then 16 chars");
+        }
+
+        Log.i("Info", "android id: " + userReference);
+        // Send UserReference to Server, if new, creates account in db
+        final ApiRepository apiRepository = new ApiRepository(getResources().getString(R.string.base_url));
+        apiRepository.apiCallUserReference(userReference);
 
         Toolbar tbLandingPage = (Toolbar) findViewById(R.id.tb_landingpage);
         setSupportActionBar(tbLandingPage);

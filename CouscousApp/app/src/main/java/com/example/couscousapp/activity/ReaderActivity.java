@@ -5,6 +5,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.FragmentManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -18,6 +19,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.RatingBar;
@@ -47,7 +49,7 @@ public class ReaderActivity extends AppCompatActivity {
 
     private static final String TAG = "ReaderActivity";
     ExpandableListView myList;
-    ExpandableListAdapter myAdapter;
+    CustomExpandableListAdapter myAdapter;
     List<String> expandableListTitle;
     HashMap<String, List<String>> expandableListDetail;
 
@@ -105,57 +107,10 @@ public class ReaderActivity extends AppCompatActivity {
         }
     }
 
-    public void withRatingBar(View view) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        LayoutInflater inflater = getLayoutInflater();
-        builder.setTitle("Bewertung");
-        View dialogLayout = inflater.inflate(R.layout.dialog_rating, null);
-        final RatingBar ratingBar1 = dialogLayout.findViewById(R.id.ratingBar1);
-        final RatingBar ratingBar2 = dialogLayout.findViewById(R.id.ratingBar2);
-        final RatingBar ratingBar3 = dialogLayout.findViewById(R.id.ratingBar3);
-        final Integer articleId = getIntent().getIntExtra("article_id", -1);
-        builder.setView(dialogLayout);
-        builder.setPositiveButton("Bestätigen", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                Toast.makeText(getApplicationContext(), "Bewertung 1: " + ratingBar1.getRating() +
-                        "\n Bewertung 2: " + ratingBar2.getRating() +
-                        "\n Bewertung 3: " + ratingBar3.getRating() + "\n Artikel ID:" + articleId, Toast.LENGTH_SHORT).show();
-
-                // Rating in Datenbank reinschreiben
-                Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl(getResources().getString(R.string.base_url))
-                        .addConverterFactory(GsonConverterFactory.create())
-                        .build();
-
-                //Todo WIP
-                JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
-                Rating rating = new Rating();
-                rating.setContentId(articleId);
-                rating.setCredibility((int) ratingBar1.getRating());
-                rating.setNeutrality((int) ratingBar2.getRating());
-                rating.setInformativity((int) ratingBar3.getRating());
-                RatingPojo ratingPojo = new RatingPojo();
-                ratingPojo.setRating(rating);
-                // Return type void
-                final ApiRepository apiRepository = new ApiRepository(getResources().getString(R.string.base_url));
-                apiRepository.apiCallContent(jsonPlaceHolderApi, ratingPojo);
-            }
-        });
-
-        builder.setNegativeButton("Abbrechen", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Log.i("Info", "Bewertung abgebrochen");
-            }
-        });
-        builder.show();
-    }
 
     public void expandableRating(View view) {
+        final Integer articleId = getIntent().getIntExtra("article_id", -1);
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Bewertung");
         myList = new ExpandableListView(this);
         expandableListDetail = ExpandableListDataPump.getData();
         expandableListTitle = new ArrayList<String>(expandableListDetail.keySet());
@@ -198,20 +153,67 @@ public class ReaderActivity extends AppCompatActivity {
             }
         });
         myList.setAdapter(myAdapter);
-        builder.setView(myList);
-        builder.setPositiveButton("Bewerten", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                // User clicked OK button
-            }
-        });
-        builder.setNegativeButton("Abbrechen", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                // User cancelled the dialog
-            }
-        });
 
-        AlertDialog dialog = builder.create();
+        final AlertDialog dialog = new AlertDialog.Builder(this)
+                .setView(myList)
+                .setTitle("Bewertung")
+                .setPositiveButton(android.R.string.ok, null) //Set to null. We override the onclick
+                .setNegativeButton(android.R.string.cancel, null)
+                .create();
+
+        dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+
+            @Override
+            public void onShow(DialogInterface dialogInterface) {
+
+                Button button = ((AlertDialog) dialog).getButton(AlertDialog.BUTTON_POSITIVE);
+                button.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View view) {
+                        // TODO Do something
+                        Rating rating = new Rating();
+                        rating.setContentId(articleId);
+                        // Top 3
+                        rating.setCredibility((int) myAdapter.getRatingPosition(0,0));
+                        rating.setNeutrality((int) myAdapter.getRatingPosition(1,0));
+                        rating.setInformativity((int) myAdapter.getRatingPosition(2,0));
+                        // Sub
+                        /*rating.setFactuality((int) myAdapter.getRatingPosition(0,1));
+                        rating.setSourceTransparency((int) myAdapter.getRatingPosition(0,2));
+                        rating.setPluralityOfViews((int) myAdapter.getRatingPosition(0,3));
+                        // Sub 2
+                        rating.setImpartiality((int) myAdapter.getRatingPosition(1,1));
+                        rating.setDispassion((int) myAdapter.getRatingPosition(1,2));
+                        rating.setXX((int) myAdapter.getRatingPosition(1,3));
+                        // Sub 3
+                        rating.setXX((int) myAdapter.getRatingPosition(2,1));
+                        rating.setXX((int) myAdapter.getRatingPosition(2,2));
+                        rating.setXX((int) myAdapter.getRatingPosition(2,3));*/
+
+                        RatingPojo ratingPojo = new RatingPojo();
+                        ratingPojo.setRating(rating);
+                        ratingPojo.setUserReference(MainActivity.userReference);
+                        // Return type void
+
+                        boolean check = true;
+
+                        for(int i = 0; i < 3; i++){
+                            if(myAdapter.getRatingPosition(i,0)==0) check = false;
+                        }
+
+                        if (check == true){
+                            final ApiRepository apiRepository = new ApiRepository(getResources().getString(R.string.base_url));
+                            apiRepository.apiCallContent(ratingPojo);
+                            Toast.makeText(getApplicationContext(),"Bewertung erfolgreich", Toast.LENGTH_SHORT).show();
+                            dialog.dismiss();
+                        } else {
+                        Toast.makeText(getApplicationContext(),"Bitte bewerte alle Kriterien", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+            }
+        });
         dialog.show();
-
     }
 }

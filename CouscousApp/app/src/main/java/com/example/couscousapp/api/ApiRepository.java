@@ -73,9 +73,31 @@ public class ApiRepository {
         });
     }
 
-    public void apiCallContent(JsonPlaceHolderApi jsonPlaceHolderApi, RatingPojo ratingPojo){
+    public void apiCallContent(RatingPojo ratingPojo){
 
         Call<Void> call = jsonPlaceHolderApi.getRating(ratingPojo);
+        // Cant run this on the UI Thread, Retrofit runs it for us on a background thread
+        call.enqueue(new Callback<Void>() {
+
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if(!response.isSuccessful()){
+                    Log.i(TAG,"apiCallData return Code != 200");
+                    return;
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Log.e(TAG,"apiCallData: ", t);
+            }
+        });
+
+    }
+
+    public void apiCallUserReference(String userReference){
+
+        Call<Void> call = jsonPlaceHolderApi.sendUserReference(userReference);
         // Cant run this on the UI Thread, Retrofit runs it for us on a background thread
         call.enqueue(new Callback<Void>() {
 
