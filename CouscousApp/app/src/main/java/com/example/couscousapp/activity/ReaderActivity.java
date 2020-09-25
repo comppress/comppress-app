@@ -65,6 +65,11 @@ public class ReaderActivity extends AppCompatActivity {
         ActionBar ab = getSupportActionBar();
         ab.setDisplayShowTitleEnabled(false);
         ab.setDisplayHomeAsUpEnabled(true);
+        tbReader.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();}
+        });
 
         WebView webView = findViewById(R.id.reader_webView);
         webView.getSettings().setJavaScriptEnabled(true);
