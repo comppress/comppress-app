@@ -6,6 +6,7 @@ import android.widget.ProgressBar;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.couscousapp.activity.MainActivity;
 import com.example.couscousapp.json_model.Data;
 import com.example.couscousapp.json_model.RatingPojo;
 
@@ -97,20 +98,22 @@ public class ApiRepository {
 
     public void apiCallUserReference(String userReference){
 
-        Call<Void> call = jsonPlaceHolderApi.sendUserReference(userReference);
+        Call<Long> call = jsonPlaceHolderApi.sendUserReference(userReference);
         // Cant run this on the UI Thread, Retrofit runs it for us on a background thread
-        call.enqueue(new Callback<Void>() {
+        call.enqueue(new Callback<Long>() {
 
             @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
+            public void onResponse(Call<Long> call, Response<Long> response) {
                 if(!response.isSuccessful()){
                     Log.i(TAG,"apiCallData return Code != 200");
                     return;
                 }
+                Long responseLong = response.body();
+                MainActivity.personId = responseLong;
             }
 
             @Override
-            public void onFailure(Call<Void> call, Throwable t) {
+            public void onFailure(Call<Long> call, Throwable t) {
                 Log.e(TAG,"apiCallData: ", t);
             }
         });

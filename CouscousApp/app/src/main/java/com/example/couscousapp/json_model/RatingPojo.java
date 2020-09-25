@@ -2,6 +2,7 @@ package com.example.couscousapp.json_model;
 
 public class RatingPojo {
 
+    //All vars related to rating, but not included in database
     private Rating rating;
     private String userReference;
 

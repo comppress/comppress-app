@@ -31,6 +31,6 @@ public interface JsonPlaceHolderApi {
     Call<Void> getRating(@Body RatingPojo ratingPojo);
 
     @GET("userReference")
-    Call<Void> sendUserReference(@Query("name") String name);
+    Call<Long> sendUserReference(@Query("name") String name);
 
 }

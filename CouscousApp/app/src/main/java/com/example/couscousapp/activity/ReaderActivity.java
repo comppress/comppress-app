@@ -171,7 +171,12 @@ public class ReaderActivity extends AppCompatActivity {
 
                     @Override
                     public void onClick(View view) {
-                        // TODO Do something
+
+                        if (MainActivity.personId == null) {
+                            Toast.makeText(getApplicationContext(),"Keine Id gefunden", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+
                         Rating rating = new Rating();
                         rating.setContentId(articleId);
                         // Top 3
@@ -194,6 +199,7 @@ public class ReaderActivity extends AppCompatActivity {
                         RatingPojo ratingPojo = new RatingPojo();
                         ratingPojo.setRating(rating);
                         ratingPojo.setUserReference(MainActivity.userReference);
+                        ratingPojo.getRating().setPersonId(MainActivity.personId);
                         // Return type void
 
                         boolean check = true;

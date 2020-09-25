@@ -2,9 +2,10 @@ package com.example.couscousapp.json_model;
 
 public class Rating {
 
+    //All vars related to rating included in database
     private Integer id;
     private Integer contentId;
-    private Integer personId;
+    private Long personId;
     private Integer creationDate;
     private Integer credibility;
     private Integer informativity;
@@ -23,7 +24,7 @@ public class Rating {
         this.contentId = contentId;
     }
 
-    public void setPersonId(Integer personId) {
+    public void setPersonId(Long personId) {
         this.personId = personId;
     }
 
@@ -71,7 +72,7 @@ public class Rating {
         return contentId;
     }
 
-    public Integer getPersonId() {
+    public Long getPersonId() {
         return personId;
     }
 

@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
     public static String userReference;
+    public static Long personId;
 
     private DrawerLayout drawer;
     private ActionBarDrawerToggle aBarDrawer;
@@ -104,7 +105,6 @@ public class MainActivity extends AppCompatActivity {
 
         // Fragment management
         ContentBest fragmentBest = new ContentBest();
-        //ContentNew fragmentNew = new ContentNew();
 
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
@@ -139,11 +139,11 @@ public class MainActivity extends AppCompatActivity {
                 // Switching between Fragments ContentBest & ContentNew
                 Log.i("Info", "Button 'Temp' pressed");
                 if(fragmentFlag==0) {ContentNew fragmentNew = new ContentNew();
-                    fragmentManager.beginTransaction().replace(R.id.fragment_placeholder, fragmentNew).addToBackStack(null).commit();
+                    fragmentManager.beginTransaction().replace(R.id.fragment_placeholder, fragmentNew).commit();
                     fragmentFlag = 1;
                     Toast.makeText(this, "Sortierung: Neueste Artikel", Toast.LENGTH_LONG).show();}
                 else {ContentBest fragmentBest = new ContentBest();
-                    fragmentManager.beginTransaction().replace(R.id.fragment_placeholder, fragmentBest).addToBackStack(null).commit();
+                    fragmentManager.beginTransaction().replace(R.id.fragment_placeholder, fragmentBest).commit();
                     fragmentFlag = 0;
                     Toast.makeText(this, "Sortierung: Bestbewertete Artikel", Toast.LENGTH_LONG).show();}
                 return true;
