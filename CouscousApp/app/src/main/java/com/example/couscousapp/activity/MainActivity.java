@@ -30,6 +30,7 @@ import com.example.couscousapp.fragments.ContentBest;
 import com.example.couscousapp.fragments.ContentNew;
 import com.example.couscousapp.json_model.Data;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -105,12 +106,21 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // Fragment management
-        ContentBest fragmentBest = new ContentBest();
+        final ContentBest fragmentBest = new ContentBest();
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.fragment_placeholder, fragmentBest);
         fragmentTransaction.commit();
 
+        /*final Snackbar networkSnackbar = Snackbar.make(findViewById(R.id.coordinatorLandingpage),"Keine Internetverbindung", Snackbar.LENGTH_INDEFINITE);
+        networkSnackbar.setAction("Erneut versuchen", new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                startActivity(getIntent());
+            }
+        });
+        networkSnackbar.show();*/
     }
 
     @Override

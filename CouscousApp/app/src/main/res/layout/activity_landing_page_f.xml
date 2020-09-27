@@ -7,6 +7,7 @@
     android:fitsSystemWindows="true">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinatorLandingpage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorPrimary">
@@ -23,9 +24,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:theme="@style/Theme.MaterialComponents.Light"
+                app:layout_scrollFlags="scroll|enterAlways|snap"
                 app:navigationIcon="@drawable/menu_24px"
-                app:title="@string/app_name"
-                app:layout_scrollFlags="scroll|enterAlways|snap"/>
+                app:title="@string/app_name" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -33,11 +34,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
-        <FrameLayout
-            android:id="@+id/fragment_placeholder"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-        </RelativeLayout >
+
+            <FrameLayout
+                android:id="@+id/fragment_placeholder"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </RelativeLayout>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
