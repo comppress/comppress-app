@@ -51,10 +51,9 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ContentV
         holder.textViewSource.setText(contentPojo.getSource());
 
         String viewRating = "";
-        if (contentPojo.getRating() != -1) {
-            viewRating = contentPojo.getRating().toString();
-        }
-        holder.textViewRating.setText(viewRating);
+        if (contentPojo.getRating() != -1) viewRating = contentPojo.getRating().toString();
+        holder.textViewRating.setText(viewRating.substring(0,3));
+
         Picasso.get().
                 load(content.getImageLink())
                 //.placeholder(context.getResources().getDrawable(R.drawable.default_image))
@@ -104,5 +103,4 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ContentV
 
 
     }
-
 }

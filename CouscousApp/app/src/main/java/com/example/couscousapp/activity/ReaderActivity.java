@@ -81,7 +81,7 @@ public class ReaderActivity extends AppCompatActivity {
         ExtendedFloatingActionButton efab = findViewById(R.id.floating_action_button);
         Float temp = getIntent().getFloatExtra("article_rating", -1);
         if (temp != -1) {
-            efab.setText(temp.toString());
+            efab.setText(temp.toString().substring(0,3));
             efab.setTextSize(20);
         }
     }
@@ -134,9 +134,9 @@ public class ReaderActivity extends AppCompatActivity {
 
             @Override
             public void onGroupExpand(int groupPosition) {
-                Toast.makeText(getApplicationContext(),
+                /*Toast.makeText(getApplicationContext(),
                         expandableListTitle.get(groupPosition) + " List Expanded.",
-                        Toast.LENGTH_SHORT).show();
+                        Toast.LENGTH_SHORT).show();*/
             }
         });
 
@@ -144,9 +144,9 @@ public class ReaderActivity extends AppCompatActivity {
 
             @Override
             public void onGroupCollapse(int groupPosition) {
-                Toast.makeText(getApplicationContext(),
+                /*Toast.makeText(getApplicationContext(),
                         expandableListTitle.get(groupPosition) + " List Collapsed.",
-                        Toast.LENGTH_SHORT).show();
+                        Toast.LENGTH_SHORT).show();*/
 
             }
         });
