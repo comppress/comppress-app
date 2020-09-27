@@ -33,6 +33,7 @@ import com.example.couscousapp.json_model.Data;
 import com.example.couscousapp.json_model.Rating;
 import com.example.couscousapp.json_model.RatingPojo;
 import com.example.couscousapp.views.ExpandableListDataPump;
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -75,6 +76,14 @@ public class ReaderActivity extends AppCompatActivity {
         webView.getSettings().setJavaScriptEnabled(true);
         webView.setWebViewClient(new WebViewClient());
         webView.loadUrl(getIntent().getStringExtra("external_url"));
+
+        //Extended Floating Action Button
+        ExtendedFloatingActionButton efab = findViewById(R.id.floating_action_button);
+        Float temp = getIntent().getFloatExtra("article_rating", -1);
+        if (temp != -1) {
+            efab.setText(temp.toString());
+            efab.setTextSize(20);
+        }
     }
 
     @Override

@@ -10,7 +10,7 @@
         android:id="@+id/comment"
         android:icon="@drawable/mode_comment_24px"
         android:title="@string/comment_title"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="never" />
     <item
         android:id="@+id/favorite"
         android:icon="@drawable/favorite_border_24px"

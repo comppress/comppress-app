@@ -71,10 +71,12 @@ public class MainActivity extends AppCompatActivity {
         final ApiRepository apiRepository = new ApiRepository(getResources().getString(R.string.base_url));
         apiRepository.apiCallUserReference(userReference);
 
-        Toolbar tbLandingPage = (Toolbar) findViewById(R.id.tb_landingpage);
+        Toolbar tbLandingPage = findViewById(R.id.tb_landingpage);
         setSupportActionBar(tbLandingPage);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setDisplayShowTitleEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if (fragmentFlag==0) {getSupportActionBar().setTitle("Bestbewertet");}
+            else {getSupportActionBar().setTitle("Neu");}
 
         // Nav drawer
         drawer = findViewById(R.id.drawer_layout);
@@ -102,13 +104,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         // Fragment management
         ContentBest fragmentBest = new ContentBest();
-
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
-
         fragmentTransaction.add(R.id.fragment_placeholder, fragmentBest);
         fragmentTransaction.commit();
 
@@ -141,10 +140,12 @@ public class MainActivity extends AppCompatActivity {
                 if(fragmentFlag==0) {ContentNew fragmentNew = new ContentNew();
                     fragmentManager.beginTransaction().replace(R.id.fragment_placeholder, fragmentNew).commit();
                     fragmentFlag = 1;
+                    getSupportActionBar().setTitle("Neu");
                     Toast.makeText(this, "Sortierung: Neueste Artikel", Toast.LENGTH_LONG).show();}
                 else {ContentBest fragmentBest = new ContentBest();
                     fragmentManager.beginTransaction().replace(R.id.fragment_placeholder, fragmentBest).commit();
                     fragmentFlag = 0;
+                    getSupportActionBar().setTitle("Bestbewertet");
                     Toast.makeText(this, "Sortierung: Bestbewertete Artikel", Toast.LENGTH_LONG).show();}
                 return true;
 

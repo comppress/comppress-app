@@ -66,6 +66,7 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ContentV
                 Intent intent = new Intent(context, ReaderActivity.class);
                 intent.putExtra("external_url", contentList.get(position).getContent().getLink());
                 intent.putExtra("article_id", contentList.get(position).getContent().getId());
+                intent.putExtra("article_rating", contentList.get(position).getRating());
                 context.startActivity(intent);
             }
         });

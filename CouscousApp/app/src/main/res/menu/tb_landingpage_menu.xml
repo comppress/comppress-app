@@ -10,10 +10,10 @@
         android:id="@+id/sort"
         android:icon="@drawable/search_24px"
         android:title="@string/search_title"
-        app:showAsAction="always" />
+        app:showAsAction="never" />
     <item
         android:id="@+id/filter"
         android:icon="@drawable/equalizer"
         android:title="@string/customize_title"
-        app:showAsAction="always"/>
+        app:showAsAction="never"/>
 </menu>
