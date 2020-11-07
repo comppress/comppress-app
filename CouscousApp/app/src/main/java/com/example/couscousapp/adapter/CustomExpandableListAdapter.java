@@ -104,18 +104,18 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
 
         childViewHolder = (ChildViewHolder)view.getTag();
 
-        childViewHolder.ratingbar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener()
-        {
-            @Override
-            public void onRatingChanged(RatingBar ratingBar, float v, boolean b)
-            {
-                ratings[listPosition][expandedListPosition+1] = (int) ratingBar.getRating();
-            }
-        });
+//        childViewHolder.ratingbar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener()
+//        {
+//            @Override
+//            public void onRatingChanged(RatingBar ratingBar, float v, boolean b)
+//            {
+//                ratings[listPosition][expandedListPosition+1] = (int) ratingBar.getRating();
+//            }
+//        });
 
         childViewHolder.features.setText(childText);
-        childViewHolder.ratingbar.setTag(expandedListPosition+1);
-        childViewHolder.ratingbar.setRating(ratings[listPosition][expandedListPosition+1]);
+//        childViewHolder.ratingbar.setTag(expandedListPosition+1);
+//        childViewHolder.ratingbar.setRating(ratings[listPosition][expandedListPosition+1]);
 
         return view;
     }
@@ -203,7 +203,7 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
         TextView features;
 
         public ChildViewHolder(View view) {
-            ratingbar = view.findViewById(R.id.subRatingBar);
+//            ratingbar = view.findViewById(R.id.subRatingBar);
             features = view.findViewById(R.id.subCriterion);
         }
     }

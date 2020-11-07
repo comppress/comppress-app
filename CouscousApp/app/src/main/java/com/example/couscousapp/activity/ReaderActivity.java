@@ -181,6 +181,8 @@ public class ReaderActivity extends AppCompatActivity {
             public void onShow(DialogInterface dialogInterface) {
 
                 Button button = ((AlertDialog) dialog).getButton(AlertDialog.BUTTON_POSITIVE);
+                button.setTextSize(20.0f);
+
                 button.setOnClickListener(new View.OnClickListener() {
 
                     @Override
