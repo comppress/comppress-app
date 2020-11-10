@@ -218,16 +218,17 @@ public class ReaderActivity extends AppCompatActivity {
                         ratingPojo.getRating().setPersonId(MainActivity.personId);
                         // Return type void
 
-                        boolean check = true;
+                        boolean allRatingsTicked = true;
 
                         for(int i = 0; i < 3; i++){
-                            if(myAdapter.getRatingPosition(i,0)==0) check = false;
+                            if(myAdapter.getRatingPosition(i,0)==0) allRatingsTicked = false;
                         }
 
-                        if (check == true){
+                        if (allRatingsTicked == true){
                             final ApiRepository apiRepository = new ApiRepository(getResources().getString(R.string.base_url));
                             apiRepository.apiCallContent(ratingPojo);
                             Toast.makeText(getApplicationContext(),"Bewertung erfolgreich", Toast.LENGTH_SHORT).show();
+                            //TODO: Intent for successful rating
                             dialog.dismiss();
                         } else {
                         Toast.makeText(getApplicationContext(),"Bitte bewerte alle Kriterien", Toast.LENGTH_SHORT).show();
