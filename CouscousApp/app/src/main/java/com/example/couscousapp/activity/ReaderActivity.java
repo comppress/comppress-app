@@ -96,19 +96,16 @@ public class ReaderActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.comment:
+            /*case R.id.comment:
                 // User chose the "Comment" item, show the app settings UI...
                 Log.i("Info", "Button 'Comment' pressed");
-                return true;
+                return true;*/
 
             case R.id.favorite:
-                // User chose the "Favorite" item, show the app settings UI...
-                Log.i("Info", "Button 'Favorite' pressed");
+                Toast.makeText(getApplicationContext(),"Zu Favoriten hinzufügen (Soon™)", Toast.LENGTH_SHORT).show();
                 return true;
 
             case R.id.browser:
-                // User chose the "Open in Browser" item
-                Log.i("Info", " 'Open in Browser' pressed");
                 String url = getIntent().getStringExtra("external_url");
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
                 return true;
@@ -155,14 +152,14 @@ public class ReaderActivity extends AppCompatActivity {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v,
                                         int groupPosition, int childPosition, long id) {
-                Toast.makeText(
+/*                Toast.makeText(
                         getApplicationContext(),
                         expandableListTitle.get(groupPosition)
                                 + " -> "
                                 + expandableListDetail.get(
                                 expandableListTitle.get(groupPosition)).
                                 get(childPosition), Toast.LENGTH_SHORT
-                        ).show();
+                        ).show();*/
                 return false;
             }
         });

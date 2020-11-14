@@ -93,11 +93,11 @@ public class MainActivity extends AppCompatActivity {
                 switch(id)
                 {
                     case R.id.login_drawer:
-                        Toast.makeText(MainActivity.this, "Einloggen",Toast.LENGTH_SHORT).show();break;
+                        Toast.makeText(MainActivity.this, "Einloggen (Soon™)",Toast.LENGTH_SHORT).show();break;
                     case R.id.settings_drawer:
-                        Toast.makeText(MainActivity.this, "Einstellungen",Toast.LENGTH_SHORT).show();break;
+                        Toast.makeText(MainActivity.this, "Einstellungen (Soon™)",Toast.LENGTH_SHORT).show();break;
                     case R.id.donate_drawer:
-                        Toast.makeText(MainActivity.this, "Spenden", Toast.LENGTH_SHORT).show();break;
+                        Toast.makeText(MainActivity.this, "Spenden (Soon™)", Toast.LENGTH_SHORT).show();break;
                     default:
                         return true;
                 }
@@ -134,19 +134,17 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
-            case R.id.sort:
-                // User chose the "Sort" item, show the app settings UI...
-                Log.i("Info", "Button 'Sort' pressed");
+            case R.id.search:
+                // User chose the "Search" item, show the app settings UI...
+                Toast.makeText(this, "Suche (Soon™)", Toast.LENGTH_SHORT).show();
                 return true;
 
             case R.id.filter:
                 // User chose the "Filter" item, show the app settings UI...
-                Log.i("Info", "Button 'Filter' pressed");
+                Toast.makeText(this, "Inhalte filtern (Soon™)", Toast.LENGTH_SHORT).show();
                 return true;
 
-            case R.id.temp:
-                // Switching between Fragments ContentBest & ContentNew
-                Log.i("Info", "Button 'Temp' pressed");
+            case R.id.sort:
                 if(fragmentFlag==0) {ContentNew fragmentNew = new ContentNew();
                     fragmentManager.beginTransaction().replace(R.id.fragment_placeholder, fragmentNew).commit();
                     fragmentFlag = 1;

@@ -9,7 +9,8 @@
     <string name="button_login">Einloggen</string>
     <string name="button_submit">Bestätigen</string>
     <string name="search_title">Suche</string>
-    <string name="customize_title">Darstellung anpassen</string>
+    <string name="customize_title">Inhalte filtern</string>
+    <string name="sort_title">Sortierung anpassen</string>
     <string name="rate_title">Bewerten</string>
     <string name="comment_title">Kommentieren</string>
     <string name="favorite_title">Zu Favoriten hinzufügen</string>

@@ -48,6 +48,7 @@
         android:layout_gravity="bottom|right"
         android:text="Bewerten"
         android:textSize="16dp"
+        app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
         app:backgroundTint="@color/colorPrimary"
         app:icon="@drawable/grade_24px"
         android:onClick="expandableRating"/>
