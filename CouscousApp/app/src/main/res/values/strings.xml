@@ -7,6 +7,7 @@
     <string name="hint_password">Passwort</string>
     <string name="button_cancel">Abbrechen</string>
     <string name="button_login">Einloggen</string>
+    <string name="button_download">Download APK</string>
     <string name="button_submit">Bestätigen</string>
     <string name="search_title">Suche</string>
     <string name="customize_title">Inhalte filtern</string>

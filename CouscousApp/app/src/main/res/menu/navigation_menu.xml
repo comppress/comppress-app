@@ -12,5 +12,8 @@
     <item android:id="@+id/donate_drawer"
         android:icon="@drawable/favorite_border_24px"
         android:title="Spenden"/>
+    <item android:id="@+id/download_drawer"
+        android:icon="@drawable/get_app_black_24dp"
+        android:title="Download APK"/>
 
 </menu>

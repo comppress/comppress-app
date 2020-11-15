@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.Fragment;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
@@ -98,6 +100,8 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "Einstellungen (Soon™)",Toast.LENGTH_SHORT).show();break;
                     case R.id.donate_drawer:
                         Toast.makeText(MainActivity.this, "Spenden (Soon™)", Toast.LENGTH_SHORT).show();break;
+                    case R.id.download_drawer:
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://comppress.de/wp-content/uploads/CouscousApp.apk")));
                     default:
                         return true;
                 }
