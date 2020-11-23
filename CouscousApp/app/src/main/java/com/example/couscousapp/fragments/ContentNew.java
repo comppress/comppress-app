@@ -86,7 +86,7 @@ public class ContentNew<val> extends Fragment {
 
     private void updateOperation(){
         ContentNew fragmentBest = new ContentNew();
-        fragmentTransaction = getFragmentManager().beginTransaction();
+        fragmentTransaction = getParentFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.fragment_placeholder, fragmentBest);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();

@@ -19,6 +19,8 @@
     <string name="rating_criterion_1">Ratingkriterium 1</string>
     <string name="rating_criterion_2">Ratingkriterium 2</string>
     <string name="rating_criterion_3">Ratingkriterium 3</string>
-    <string name="Open">\"Öffnen\"</string>
-    <string name="Close">\"Schließen\"</string>
+    <string name="open">\"Öffnen\"</string>
+    <string name="close">\"Schließen\"</string>
+    <string name="login_logo">Login Logo</string>
+    <string name="rate">Bewerten</string>
 </resources>

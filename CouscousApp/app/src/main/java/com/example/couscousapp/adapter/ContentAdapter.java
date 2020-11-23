@@ -1,11 +1,13 @@
 package com.example.couscousapp.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,6 +22,7 @@ import com.example.couscousapp.json_model.ContentPojo;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+import java.util.Locale;
 
 public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ContentViewHolder>{
 
@@ -40,6 +43,7 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ContentV
         return new ContentViewHolder(LayoutInflater.from(context).inflate(R.layout.row_layout_content, parent, false));
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull final ContentViewHolder holder, final int position) {
 
@@ -47,6 +51,7 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ContentV
         Content content = contentPojo.getContent();
 
         holder.textViewTitle.setText(content.getTitle());
+        // holder.textViewTitle.setText(content.getImageLink()); //Check image link
         holder.textViewCreationDate.setText(content.getCreationDate());
         holder.textViewSource.setText(contentPojo.getSource());
 
@@ -61,6 +66,7 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ContentV
         Picasso.get().
                 load(content.getImageLink())
                 //.placeholder(context.getResources().getDrawable(R.drawable.default_image))
+                .fit().centerCrop()
                 .error(R.drawable.default_image)
                 .into(holder.imageViewContent);
 

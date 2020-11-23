@@ -3,17 +3,16 @@
 android:id="@+id/relativeLayout"
 android:layout_width="match_parent"
 android:layout_height="wrap_content"
-android:background="@color/colorPrimary">
+android:background="@color/colorPrimaryDark">
 
 
 <TextView
     android:id="@+id/text_view_category"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="10dp"
+    android:layout_marginStart="10dp"
     android:layout_marginTop="10dp"
     android:layout_marginBottom="10dp"
-    android:text="Category"
     android:textSize="18sp"
     android:textStyle="bold" />
 
@@ -22,17 +21,17 @@ android:background="@color/colorPrimary">
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_below="@id/text_view_category"
-    android:layout_marginLeft="10dp"
     android:layout_marginBottom="15dp"
+    android:layout_marginStart="10dp"
     android:orientation="horizontal" />
 
-<View
+<!--<View
     android:id="@+id/activityMainDivider"
     android:layout_width="match_parent"
     android:layout_height="1dp"
     android:layout_below="@+id/landingpage_recycler_view_horizontal"
     android:layout_marginBottom="5dp"
-    android:background="#31C7C7CC" />
+    android:background="#31C7C7CC" />-->
 
 
 </RelativeLayout>

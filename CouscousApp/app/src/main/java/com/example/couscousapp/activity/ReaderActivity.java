@@ -4,8 +4,11 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 
+import android.annotation.SuppressLint;
 import android.app.FragmentManager;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -39,6 +42,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -55,15 +59,17 @@ public class ReaderActivity extends AppCompatActivity {
     HashMap<String, List<String>> expandableListDetail;
 
 
+    @SuppressLint({"SetJavaScriptEnabled", "SetTextI18n"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reader);
 
 
-        Toolbar tbReader = (Toolbar) findViewById(R.id.tb_reader);
+        Toolbar tbReader = findViewById(R.id.tb_reader);
         setSupportActionBar(tbReader);
         ActionBar ab = getSupportActionBar();
+        assert ab != null;
         ab.setDisplayShowTitleEnabled(false);
         ab.setDisplayHomeAsUpEnabled(true);
         tbReader.setNavigationOnClickListener(new View.OnClickListener() {
@@ -75,13 +81,13 @@ public class ReaderActivity extends AppCompatActivity {
         WebView webView = findViewById(R.id.reader_webView);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.setWebViewClient(new WebViewClient());
-        webView.loadUrl(getIntent().getStringExtra("external_url"));
+        webView.loadUrl(Objects.requireNonNull(getIntent().getStringExtra("external_url")));
 
         //Extended Floating Action Button
         ExtendedFloatingActionButton efab = findViewById(R.id.floating_action_button);
-        Float temp = getIntent().getFloatExtra("article_rating", -1);
+        float temp = getIntent().getFloatExtra("article_rating", -1);
         if (temp != -1) {
-            efab.setText(temp.toString().substring(0,3));
+            efab.setText(Float.toString(temp).substring(0,3));
             efab.setTextSize(20);
         }
     }
@@ -124,7 +130,7 @@ public class ReaderActivity extends AppCompatActivity {
 
         myList = new ExpandableListView(this);
         expandableListDetail = ExpandableListDataPump.getData();
-        expandableListTitle = new ArrayList<String>(expandableListDetail.keySet());
+        expandableListTitle = new ArrayList<>(expandableListDetail.keySet());
         myAdapter = new CustomExpandableListAdapter(this, expandableListTitle, expandableListDetail);
         myList.setAdapter(myAdapter);
         myList.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
@@ -172,15 +178,17 @@ public class ReaderActivity extends AppCompatActivity {
                 .setNegativeButton(android.R.string.cancel, null)
                 .create();
 
+
+
         dialog.setOnShowListener(new DialogInterface.OnShowListener() {
 
             @Override
             public void onShow(DialogInterface dialogInterface) {
+                Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+                positiveButton.setTextSize(20.0f);
+                positiveButton.setTextColor(ContextCompat.getColor(getApplicationContext(),R.color.colorAccent));
 
-                Button button = ((AlertDialog) dialog).getButton(AlertDialog.BUTTON_POSITIVE);
-                button.setTextSize(20.0f);
-
-                button.setOnClickListener(new View.OnClickListener() {
+                positiveButton.setOnClickListener(new View.OnClickListener() {
 
                     @Override
                     public void onClick(View view) {
@@ -193,9 +201,9 @@ public class ReaderActivity extends AppCompatActivity {
                         Rating rating = new Rating();
                         rating.setContentId(articleId);
                         // Top 3
-                        rating.setCredibility((int) myAdapter.getRatingPosition(0,0));
-                        rating.setNeutrality((int) myAdapter.getRatingPosition(1,0));
-                        rating.setInformativity((int) myAdapter.getRatingPosition(2,0));
+                        rating.setCredibility(myAdapter.getRatingPosition(0,0));
+                        rating.setNeutrality(myAdapter.getRatingPosition(1,0));
+                        rating.setInformativity(myAdapter.getRatingPosition(2,0));
                         // Sub
                         /*rating.setFactuality((int) myAdapter.getRatingPosition(0,1));
                         rating.setSourceTransparency((int) myAdapter.getRatingPosition(0,2));
@@ -221,7 +229,7 @@ public class ReaderActivity extends AppCompatActivity {
                             if(myAdapter.getRatingPosition(i,0)==0) allRatingsTicked = false;
                         }
 
-                        if (allRatingsTicked == true){
+                        if (allRatingsTicked){
                             final ApiRepository apiRepository = new ApiRepository(getResources().getString(R.string.base_url));
                             apiRepository.apiCallContent(ratingPojo);
                             Toast.makeText(getApplicationContext(),"Bewertung erfolgreich", Toast.LENGTH_SHORT).show();
@@ -232,6 +240,7 @@ public class ReaderActivity extends AppCompatActivity {
                         }
                     }
                 });
+                dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(ContextCompat.getColor(getApplicationContext(),R.color.colorAccent));
             }
         });
         dialog.show();

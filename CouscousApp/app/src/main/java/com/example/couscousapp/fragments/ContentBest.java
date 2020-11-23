@@ -80,7 +80,7 @@ public class ContentBest<val> extends Fragment {
 
     private void updateOperation(){
         ContentBest fragmentBest = new ContentBest();
-        fragmentTransaction = getFragmentManager().beginTransaction();
+        fragmentTransaction = getParentFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.fragment_placeholder, fragmentBest);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();

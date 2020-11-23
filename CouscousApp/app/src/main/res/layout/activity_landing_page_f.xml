@@ -10,14 +10,14 @@
         android:id="@+id/coordinatorLandingpage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorPrimary">
+        android:background="@color/colorPrimaryDark">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/tb_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="start|top"
-            android:background="@color/colorPrimaryDark">
+            android:background="@color/colorPrimary">
 
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/tb_landingpage"
@@ -47,7 +47,7 @@
         android:id="@+id/navigation"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_gravity="start|left"
+        android:layout_gravity="start|start"
         app:headerLayout="@layout/navigation_header"
         app:menu="@menu/navigation_menu" />
 </androidx.drawerlayout.widget.DrawerLayout>

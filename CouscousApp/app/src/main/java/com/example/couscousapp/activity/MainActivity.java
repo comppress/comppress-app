@@ -5,14 +5,10 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import android.app.Fragment;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -21,41 +17,26 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
-import com.example.couscousapp.adapter.HomeAdapter;
 import com.example.couscousapp.R;
 import com.example.couscousapp.api.ApiRepository;
-import com.example.couscousapp.api.JsonPlaceHolderApi;
 import com.example.couscousapp.fragments.ContentBest;
 import com.example.couscousapp.fragments.ContentNew;
-import com.example.couscousapp.json_model.Data;
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.snackbar.Snackbar;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String TAG = "MainActivity";
     public static String userReference;
     public static Long personId;
 
-    private DrawerLayout drawer;
     private ActionBarDrawerToggle aBarDrawer;
-    private NavigationView navView;
     private FragmentManager fragmentManager;
-    private FragmentTransaction fragmentTransaction;
     int fragmentFlag;
 
+    @SuppressLint("HardwareIds")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         userReference = Settings.Secure.getString(getApplication().getContentResolver(),
                 Settings.Secure.ANDROID_ID);
         if(userReference.length() > 16){
-            Log.w("warn","User reference might fail to be written to db if longer then 16 chars");
+            Log.w("warn","User reference might fail to be written to db if longer than 16 chars");
         }
 
         Log.i("Info", "android id: " + userReference);
@@ -76,17 +57,17 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar tbLandingPage = findViewById(R.id.tb_landingpage);
         setSupportActionBar(tbLandingPage);
-        getSupportActionBar().setDisplayShowTitleEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         if (fragmentFlag==0) {getSupportActionBar().setTitle("Bestbewertet");}
             else {getSupportActionBar().setTitle("Neu");}
 
         // Nav drawer
-        drawer = findViewById(R.id.drawer_layout);
-        aBarDrawer = new ActionBarDrawerToggle(this, drawer,R.string.Open, R.string.Close);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        aBarDrawer = new ActionBarDrawerToggle(this, drawer,R.string.open, R.string.close);
         drawer.addDrawerListener(aBarDrawer);
         aBarDrawer.syncState();
-        navView = findViewById(R.id.navigation);
+        NavigationView navView = findViewById(R.id.navigation);
 
         navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -112,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
         // Fragment management
         final ContentBest fragmentBest = new ContentBest();
         fragmentManager = getSupportFragmentManager();
-        fragmentTransaction = fragmentManager.beginTransaction();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.fragment_placeholder, fragmentBest);
         fragmentTransaction.commit();
 
@@ -152,12 +133,12 @@ public class MainActivity extends AppCompatActivity {
                 if(fragmentFlag==0) {ContentNew fragmentNew = new ContentNew();
                     fragmentManager.beginTransaction().replace(R.id.fragment_placeholder, fragmentNew).commit();
                     fragmentFlag = 1;
-                    getSupportActionBar().setTitle("Neu");
+                    Objects.requireNonNull(getSupportActionBar()).setTitle("Neu");
                     Toast.makeText(this, "Sortierung: Neueste Artikel", Toast.LENGTH_LONG).show();}
                 else {ContentBest fragmentBest = new ContentBest();
                     fragmentManager.beginTransaction().replace(R.id.fragment_placeholder, fragmentBest).commit();
                     fragmentFlag = 0;
-                    getSupportActionBar().setTitle("Bestbewertet");
+                    Objects.requireNonNull(getSupportActionBar()).setTitle("Bestbewertet");
                     Toast.makeText(this, "Sortierung: Bestbewertete Artikel", Toast.LENGTH_LONG).show();}
                 return true;
 
