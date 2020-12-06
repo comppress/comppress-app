@@ -37,14 +37,15 @@ public class ApiRepository {
 
     public void apiCallGetNews(final ProgressBar progressBar, final RecyclerView.Adapter adapter, final List<Data> dataList, String apiCallString) {
         Call<List<Data>> call = null;
-        if (apiCallString == "ratedNews") {
+        if (apiCallString.equals("ratedNews")) {
             call = jsonPlaceHolderApi.ratedNews();
             Log.i("Info", "BestRated");
-        } else if (apiCallString == "latestNews") {
+        } else if (apiCallString.equals("latestNews")) {
             call = jsonPlaceHolderApi.latestNews();
             Log.i("Info", "Latest");
         }
         // Cant run this on the UI Thread, Retrofit runs it for us on a background thread
+        assert call != null;
         call.enqueue(new Callback<List<Data>>() {
 
             @Override
@@ -58,10 +59,8 @@ public class ApiRepository {
 
                 List<Data> responseDataList = response.body();
 
-                for (Data data : responseDataList) {
-
-                    dataList.add(data);
-                }
+                assert responseDataList != null;
+                dataList.addAll(responseDataList);
                 adapter.notifyDataSetChanged();
 
             }
@@ -84,7 +83,6 @@ public class ApiRepository {
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if(!response.isSuccessful()){
                     Log.i(TAG,"apiCallData return Code != 200");
-                    return;
                 }
             }
 
@@ -108,8 +106,7 @@ public class ApiRepository {
                     Log.i(TAG,"apiCallData return Code != 200");
                     return;
                 }
-                Long responseLong = response.body();
-                MainActivity.personId = responseLong;
+                MainActivity.personId = response.body();
             }
 
             @Override

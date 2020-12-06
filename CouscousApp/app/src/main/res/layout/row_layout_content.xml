@@ -6,7 +6,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/card_view_landingpage"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
@@ -74,6 +74,7 @@
                     android:ellipsize="end"
                     android:fontFamily="sans-serif"
                     android:maxLines="4"
+                    android:minLines="4"
                     android:text="TITEL - Lorem ipsum dolor sit amet, consetetur - TITEL"
                     android:textAppearance="?android:textAppearanceMedium"
                     android:textStyle="bold" />
@@ -91,7 +92,7 @@
 
         </RelativeLayout>
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
 
 </FrameLayout>

@@ -6,10 +6,7 @@
         <item name="colorPrimaryDark">@color/colorPrimary</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowLightStatusBar">true</item>
-
     </style>
-
-
 
     <style name="RatingBarTop" parent="Theme.AppCompat">
         <item name="colorControlNormal">@color/colorPrimaryDark2</item>
