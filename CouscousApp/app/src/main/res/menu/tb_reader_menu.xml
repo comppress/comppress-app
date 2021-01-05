@@ -13,7 +13,7 @@
         app:showAsAction="never" />-->
     <item
         android:id="@+id/favorite"
-        android:icon="@drawable/favorite_border_24px"
+        android:icon="@drawable/heart_24px"
         android:title="@string/favorite_title"
         app:showAsAction="never" />
 

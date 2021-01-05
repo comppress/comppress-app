@@ -2,7 +2,7 @@
     <string name="app_name">CouscousApp</string>
     <string name="label_reader">Reader View</string>
     <string name="content_category">Content Category</string>
-    <string name="base_url">http://comppress.org:8080/</string>
+    <string name="base_url">http://app.comppress.org:8080/</string>
     <string name="hint_username">Benutzername</string>
     <string name="hint_password">Passwort</string>
     <string name="button_cancel">Abbrechen</string>

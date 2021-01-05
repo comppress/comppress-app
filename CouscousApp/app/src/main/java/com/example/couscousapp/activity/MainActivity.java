@@ -79,10 +79,18 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "Einloggen (Soon™)",Toast.LENGTH_SHORT).show();break;
                     case R.id.settings_drawer:
                         Toast.makeText(MainActivity.this, "Einstellungen (Soon™)",Toast.LENGTH_SHORT).show();break;
+                    case R.id.download_drawer:
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://comppress.de/wp-content/uploads/CouscousApp.apk")));break;
+                    case R.id.homepage_drawer:
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://comppress.de/")));break;
+                    case R.id.join_drawer:
+                        Toast.makeText(MainActivity.this, "Mitglied werden (Soon™)",Toast.LENGTH_SHORT).show();break;
                     case R.id.donate_drawer:
                         Toast.makeText(MainActivity.this, "Spenden (Soon™)", Toast.LENGTH_SHORT).show();break;
-                    case R.id.download_drawer:
-                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://comppress.de/wp-content/uploads/CouscousApp.apk")));
+                    case R.id.github_drawer:
+                        Toast.makeText(MainActivity.this, "Github (Soon™)",Toast.LENGTH_SHORT).show();break;
+                    case R.id.supportchat_drawer:
+                        Toast.makeText(MainActivity.this, "Support Chat (Soon™)", Toast.LENGTH_SHORT).show();break;
                     default:
                         return true;
                 }

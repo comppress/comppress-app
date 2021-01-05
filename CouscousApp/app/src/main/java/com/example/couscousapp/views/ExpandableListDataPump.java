@@ -14,7 +14,7 @@ public class ExpandableListDataPump {
 //        criterion1.add("Verschiedenartige Quellen");
 
         List<String> criterion2 = new ArrayList<String>();
-        criterion2.add("- Sind die Arguemente / Werteurteile belegt?\n- Werden diese reflektiert?\n- Bedient sicht der Autor einer logischen\n  Argumentation?");
+        criterion2.add("- Sind die Argumente / Werteurteile belegt?\n- Werden diese reflektiert?\n- Bedient sicht der Autor einer logischen\n  Argumentation?");
 //        criterion2.add("Werturteile reflektiert");
 //        criterion2.add("Argumentation logisch");
 
@@ -24,7 +24,7 @@ public class ExpandableListDataPump {
 //        criterion3.add("Criterion 3.3");
 
         expandableListDetail.put("Sorgfältige Quellenarbeit", criterion1);
-        expandableListDetail.put("Plausibel Argumentiert", criterion2);
+        expandableListDetail.put("Plausibel argumentiert", criterion2);
         expandableListDetail.put("Ausgewogene Berichterstattung", criterion3);
         return expandableListDetail;
     }
