@@ -1,7 +1,10 @@
 package com.example.couscousapp.adapter;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.TreeMap;
+
 import android.content.Context;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
@@ -15,10 +18,10 @@ import android.widget.Toast;
 import com.example.couscousapp.R;
 
 public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
-
+    //TODO Cleanup this mess
     private Context context;
     private List<String> expandableListTitle;
-    private HashMap<String, List<String>> expandableListDetail;
+    private LinkedHashMap<String, List<String>> expandableListDetail;
     private int[][] ratings = new int[3][4];
     private ChildViewHolder childViewHolder;
     private GroupViewHolder groupViewHolder;
@@ -36,7 +39,7 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
     }
 
     public CustomExpandableListAdapter(Context context, List<String> expandableListTitle,
-                                       HashMap<String, List<String>> expandableListDetail) {
+                                       LinkedHashMap<String, List<String>> expandableListDetail) {
         this.context = context;
         this.expandableListTitle = expandableListTitle;
         this.expandableListDetail = expandableListDetail;

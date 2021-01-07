@@ -41,8 +41,10 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Objects;
+import java.util.TreeMap;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -56,7 +58,7 @@ public class ReaderActivity extends AppCompatActivity {
     ExpandableListView myList;
     CustomExpandableListAdapter myAdapter;
     List<String> expandableListTitle;
-    HashMap<String, List<String>> expandableListDetail;
+    LinkedHashMap<String, List<String>> expandableListDetail;
 
 
     @SuppressLint({"SetJavaScriptEnabled", "SetTextI18n"})

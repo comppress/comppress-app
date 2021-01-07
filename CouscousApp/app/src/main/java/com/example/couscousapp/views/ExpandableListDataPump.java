@@ -1,12 +1,12 @@
 package com.example.couscousapp.views;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
+import java.util.LinkedHashMap;
 
 public class ExpandableListDataPump {
-    public static HashMap<String, List<String>> getData() {
-        HashMap<String, List<String>> expandableListDetail = new HashMap<String, List<String>>();
+    public static LinkedHashMap<String, List<String>> getData() {
+        LinkedHashMap<String, List<String>> expandableListDetail = new LinkedHashMap<String, List<String>>();
 
         List<String> criterion1 = new ArrayList<String>();
         criterion1.add("- Sind die Aussagen des Textes belegt?\n- Werden unterschiedliche Quellen genannt?");
