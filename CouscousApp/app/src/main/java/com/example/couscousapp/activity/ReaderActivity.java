@@ -82,7 +82,20 @@ public class ReaderActivity extends AppCompatActivity {
 
         WebView webView = findViewById(R.id.reader_webView);
         webView.getSettings().setJavaScriptEnabled(true);
-        webView.setWebViewClient(new WebViewClient());
+        webView.setWebViewClient(new WebViewClient(){
+            //Enables Whatsapp and Mail Share-Buttons on sites in WebView
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView wv, String url) {
+                if(url.startsWith("mailto:") || url.startsWith("whatsapp:")) {
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setData(Uri.parse(url));
+                    startActivity(intent);
+                    wv.goBack();
+                    return true;
+                }
+                return false;
+                }
+                                 });
         webView.loadUrl(Objects.requireNonNull(getIntent().getStringExtra("external_url")));
 
         //Extended Floating Action Button
