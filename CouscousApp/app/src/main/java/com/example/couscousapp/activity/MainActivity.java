@@ -21,9 +21,11 @@ import android.widget.Toast;
 
 import com.example.couscousapp.R;
 import com.example.couscousapp.api.ApiRepository;
-import com.example.couscousapp.fragments.ContentBest;
-import com.example.couscousapp.fragments.ContentNew;
+import com.example.couscousapp.fragments.ContentDay;
+import com.example.couscousapp.fragments.ContentMonth;
+import com.example.couscousapp.fragments.ContentWeek;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.tabs.TabLayout;
 
 import java.util.Objects;
 
@@ -57,10 +59,44 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar tbLandingPage = findViewById(R.id.tb_landingpage);
         setSupportActionBar(tbLandingPage);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        if (fragmentFlag==0) {getSupportActionBar().setTitle("Bestbewertet");}
-            else {getSupportActionBar().setTitle("Neu");}
+
+        final TabLayout tabLayout = (TabLayout) findViewById(R.id.tablayout_landingpage);
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+
+                switch (tab.getPosition()) {
+                    case 0:
+                        ContentDay fragmentDay = new ContentDay();
+                        fragmentManager.beginTransaction().replace(R.id.fragment_placeholder, fragmentDay).commit();
+                        break;
+
+                    case 1:
+                        ContentWeek fragmentWeek = new ContentWeek();
+                        fragmentManager.beginTransaction().replace(R.id.fragment_placeholder, fragmentWeek).commit();
+                        //Toast.makeText(this, "Sortierung: Woche", Toast.LENGTH_LONG).show();
+                        break;
+
+                    case 2:
+                        ContentMonth fragmentMonth = new ContentMonth();
+                        fragmentManager.beginTransaction().replace(R.id.fragment_placeholder, fragmentMonth).commit();
+                        break;
+                }
+
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+                // called when tab unselected
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+                // called when a tab is reselected
+            }
+        });
 
         // Nav drawer
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -99,21 +135,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // Fragment management
-        final ContentBest fragmentBest = new ContentBest();
+        final ContentDay fragmentDay = new ContentDay();
         fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.fragment_placeholder, fragmentBest);
+        fragmentTransaction.add(R.id.fragment_placeholder, fragmentDay);
         fragmentTransaction.commit();
 
-        /*final Snackbar networkSnackbar = Snackbar.make(findViewById(R.id.coordinatorLandingpage),"Keine Internetverbindung", Snackbar.LENGTH_INDEFINITE);
-        networkSnackbar.setAction("Erneut versuchen", new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-                startActivity(getIntent());
-            }
-        });
-        networkSnackbar.show();*/
     }
 
     @Override
@@ -135,19 +162,6 @@ public class MainActivity extends AppCompatActivity {
             case R.id.filter:
                 // User chose the "Filter" item, show the app settings UI...
                 Toast.makeText(this, "Inhalte filtern (Soon™)", Toast.LENGTH_SHORT).show();
-                return true;
-
-            case R.id.sort:
-                if(fragmentFlag==0) {ContentNew fragmentNew = new ContentNew();
-                    fragmentManager.beginTransaction().replace(R.id.fragment_placeholder, fragmentNew).commit();
-                    fragmentFlag = 1;
-                    Objects.requireNonNull(getSupportActionBar()).setTitle("Neu");
-                    Toast.makeText(this, "Sortierung: Neueste Artikel", Toast.LENGTH_LONG).show();}
-                else {ContentBest fragmentBest = new ContentBest();
-                    fragmentManager.beginTransaction().replace(R.id.fragment_placeholder, fragmentBest).commit();
-                    fragmentFlag = 0;
-                    Objects.requireNonNull(getSupportActionBar()).setTitle("Bestbewertet");
-                    Toast.makeText(this, "Sortierung: Bestbewertete Artikel", Toast.LENGTH_LONG).show();}
                 return true;
 
             default:

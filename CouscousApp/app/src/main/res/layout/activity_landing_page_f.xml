@@ -23,12 +23,38 @@
                 android:id="@+id/tb_landingpage"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:theme="@style/Theme.MaterialComponents.Light"
+                android:theme="@style/AppTheme"
                 app:layout_scrollFlags="scroll|enterAlways|snap"
-                app:navigationIcon="@drawable/menu_24px"
-                app:title="@string/app_name" />
+                app:navigationIcon="@drawable/menu_24px">
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tablayout_landingpage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="30dp"
+                    app:tabSelectedTextColor="#000000">
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/day" />
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/week" />
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/month" />
+
+                </com.google.android.material.tabs.TabLayout>
+
+            </com.google.android.material.appbar.MaterialToolbar>
 
             <!--<com.google.android.material.tabs.TabLayout
+                android:id="@+id/tablayout_landingpage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:tabSelectedTextColor="#000000">
@@ -48,7 +74,7 @@
                     android:layout_height="wrap_content"
                     android:text="MONAT" />
 
-            </com.google.android.material.tabs.TabLayout>-->
+            </com.google.android.material.tabs.TabLayout> -->
 
         </com.google.android.material.appbar.AppBarLayout>
 

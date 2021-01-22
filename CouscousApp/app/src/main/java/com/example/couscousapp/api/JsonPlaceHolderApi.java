@@ -33,4 +33,12 @@ public interface JsonPlaceHolderApi {
     @GET("userReference")
     Call<Long> sendUserReference(@Query("name") String name);
 
+    @GET("day?listLength=50")
+    Call<List<Data>> getNewsOfDay();
+
+    @GET("articles?interval=week&listLength=50")
+    Call<List<Data>> getNewsOfWeek();
+
+    @GET("articles?interval=month&listLength=50")
+    Call<List<Data>> getNewsOfMonth();
 }

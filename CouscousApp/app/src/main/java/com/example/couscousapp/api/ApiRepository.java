@@ -43,6 +43,15 @@ public class ApiRepository {
         } else if (apiCallString.equals("latestNews")) {
             call = jsonPlaceHolderApi.latestNews();
             Log.i("Info", "Latest");
+        } else if (apiCallString.equals("day")){
+            call = jsonPlaceHolderApi.getNewsOfDay();
+            Log.i("Info", "Day");
+        } else if (apiCallString.equals("week")){
+            call = jsonPlaceHolderApi.getNewsOfWeek();
+            Log.i("Info", "Week");
+        } else if (apiCallString.equals("month")){
+            call = jsonPlaceHolderApi.getNewsOfMonth();
+            Log.i("Info", "Month");
         }
         // Cant run this on the UI Thread, Retrofit runs it for us on a background thread
         assert call != null;

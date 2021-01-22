@@ -21,9 +21,7 @@ import com.example.couscousapp.json_model.Data;
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class ContentBest<val> extends Fragment {
-
+public class ContentWeek <val> extends Fragment {
     private ProgressBar progressBar;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
@@ -48,7 +46,7 @@ public class ContentBest<val> extends Fragment {
         recyclerView.setAdapter(adapter);
 
         final ApiRepository apiRepository = new ApiRepository(getResources().getString(R.string.base_url));
-        apiRepository.apiCallGetNews(progressBar, adapter, dataList, "ratedNews");
+        apiRepository.apiCallGetNews(progressBar, adapter, dataList, "week");
 
         swipeRefreshLayout = rootView.findViewById(R.id.swipe_refresh_layout);
         swipeRefreshLayout.setOnRefreshListener(
@@ -59,26 +57,26 @@ public class ContentBest<val> extends Fragment {
                         // This method performs the actual data-refresh operation.
                         // The method calls setRefreshing(false) when it's finished.
                         updateOperation();
-                        }
+                    }
                 }
         );
         return rootView;
     }
 
-        @Override
-        public void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-            }
+    }
 
-    public ContentBest() {
+    public ContentWeek() {
         // Required empty public constructor
     }
 
     private void updateOperation(){
-        ContentBest fragmentBest = new ContentBest();
+        ContentWeek fragmentWeek = new ContentWeek();
         fragmentTransaction = getParentFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_placeholder, fragmentBest);
+        fragmentTransaction.replace(R.id.fragment_placeholder, fragmentWeek);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }

@@ -23,4 +23,7 @@
     <string name="close">\"Schließen\"</string>
     <string name="login_logo">Login Logo</string>
     <string name="rate">Bewerten</string>
+    <string name="day">Tag</string>
+    <string name="week">Woche</string>
+    <string name="month">Monat</string>
 </resources>

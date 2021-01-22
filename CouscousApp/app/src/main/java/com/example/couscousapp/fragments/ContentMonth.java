@@ -21,9 +21,7 @@ import com.example.couscousapp.json_model.Data;
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class ContentBest<val> extends Fragment {
-
+public class ContentMonth <val> extends Fragment {
     private ProgressBar progressBar;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
@@ -48,7 +46,7 @@ public class ContentBest<val> extends Fragment {
         recyclerView.setAdapter(adapter);
 
         final ApiRepository apiRepository = new ApiRepository(getResources().getString(R.string.base_url));
-        apiRepository.apiCallGetNews(progressBar, adapter, dataList, "ratedNews");
+        apiRepository.apiCallGetNews(progressBar, adapter, dataList, "month");
 
         swipeRefreshLayout = rootView.findViewById(R.id.swipe_refresh_layout);
         swipeRefreshLayout.setOnRefreshListener(
@@ -59,26 +57,26 @@ public class ContentBest<val> extends Fragment {
                         // This method performs the actual data-refresh operation.
                         // The method calls setRefreshing(false) when it's finished.
                         updateOperation();
-                        }
+                    }
                 }
         );
         return rootView;
     }
 
-        @Override
-        public void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-            }
+    }
 
-    public ContentBest() {
+    public ContentMonth() {
         // Required empty public constructor
     }
 
     private void updateOperation(){
-        ContentBest fragmentBest = new ContentBest();
+        ContentMonth fragmentMonth = new ContentMonth();
         fragmentTransaction = getParentFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_placeholder, fragmentBest);
+        fragmentTransaction.replace(R.id.fragment_placeholder, fragmentMonth);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
