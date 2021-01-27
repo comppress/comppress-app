@@ -43,7 +43,7 @@
                 android:layout_marginBottom="4dp"
                 android:shadowColor="#000000"
                 android:shadowRadius="15"
-                android:text="4,5"
+                android:text="Neu"
                 android:textColor="#FFFFFF"
                 android:textSize="22sp"
                 android:textStyle="bold" />

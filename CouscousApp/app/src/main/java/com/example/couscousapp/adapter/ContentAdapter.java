@@ -55,9 +55,8 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ContentV
         holder.textViewCreationDate.setText(content.getCreationDate());
         holder.textViewSource.setText(contentPojo.getSource());
 
-        if (contentPojo.getRating() == -1) {
-            holder.textViewRating.setText("");
-        } else {
+
+        if (contentPojo.getRating() != -1) {
             holder.textViewRating.setText(contentPojo.getRating().toString().substring(0,3));
         }
 
