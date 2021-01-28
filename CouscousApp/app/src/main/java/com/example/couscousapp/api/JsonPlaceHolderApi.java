@@ -21,10 +21,10 @@ public interface JsonPlaceHolderApi {
     @GET("data?listLength=50")
     Call<List<Data>> getData();
 
-    @GET("ratedNews?listLength=20")
+    @GET("ratedNews")
     Call<List<Data>> ratedNews();
 
-    @GET("latestNews?listLength=20")
+    @GET("latestNews")
     Call<List<Data>> latestNews();
 
     @POST("postRating")

@@ -26,4 +26,9 @@
     <string name="day">Tag</string>
     <string name="week">Woche</string>
     <string name="month">Monat</string>
+    <string name="source">Quelle</string>
+    <string name="title">TITEL - Lorem ipsum dolor sit amet, consetetur - TITEL</string>
+    <string name="time">vor 60 Minuten</string>
+    <string name="rating">Neu</string>
+    <string name="article_image">Artikelbild</string>
 </resources>

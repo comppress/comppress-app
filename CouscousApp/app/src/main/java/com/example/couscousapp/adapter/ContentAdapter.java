@@ -20,6 +20,7 @@ import com.example.couscousapp.activity.ReaderActivity;
 import com.example.couscousapp.json_model.Content;
 import com.example.couscousapp.json_model.ContentPojo;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.RequestCreator;
 
 import java.util.List;
 import java.util.Locale;
@@ -56,17 +57,24 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ContentV
         holder.textViewSource.setText(contentPojo.getSource());
 
 
-        if (contentPojo.getRating() != -1) {
+        if (contentPojo.getRating() == -1) {
+            holder.textViewRating.setText("Neu");
+        } else {
             holder.textViewRating.setText(contentPojo.getRating().toString().substring(0,3));
         }
 
+        if (content.getImageLink().equals("not implemented")) {
+            holder.textViewMissingImage.setText(contentPojo.getSource());
+        } else {
+            holder.textViewMissingImage.setText("");
+        }
 
 
         Picasso.get().
                 load(content.getImageLink())
                 //.placeholder(context.getResources().getDrawable(R.drawable.default_image))
                 .fit().centerCrop()
-                .error(R.drawable.default_image)
+                //.error(R.drawable.default_image)
                 .into(holder.imageViewContent);
 
         holder.contentCardView.setOnClickListener(new View.OnClickListener() {
@@ -94,6 +102,7 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ContentV
         private TextView textViewCreationDate;
         private TextView textViewSource;
         private TextView textViewRating;
+        private TextView textViewMissingImage;
         private ImageView imageViewContent;
         private CardView contentCardView;
 
@@ -107,7 +116,7 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ContentV
             textViewRating = itemView.findViewById(R.id.text_view_rating);
             imageViewContent = itemView.findViewById(R.id.image_view_content);
             contentCardView = itemView.findViewById(R.id.card_view_landingpage);
-
+            textViewMissingImage = itemView.findViewById(R.id.text_view_missing_image);
         }
 
 
