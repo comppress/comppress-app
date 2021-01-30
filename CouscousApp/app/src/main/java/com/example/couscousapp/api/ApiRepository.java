@@ -37,13 +37,13 @@ public class ApiRepository {
 
     public void apiCallGetNews(final ProgressBar progressBar, final RecyclerView.Adapter adapter, final List<Data> dataList, String apiCallString) {
         Call<List<Data>> call = null;
-        if (apiCallString.equals("ratedNews")) {
+        if /*(apiCallString.equals("ratedNews")) {
             call = jsonPlaceHolderApi.ratedNews();
             Log.i("Info", "BestRated");
         } else if (apiCallString.equals("latestNews")) {
             call = jsonPlaceHolderApi.latestNews();
             Log.i("Info", "Latest");
-        } else if (apiCallString.equals("day")){
+        } else if */ (apiCallString.equals("day")){
             call = jsonPlaceHolderApi.getNewsOfDay();
             Log.i("Info", "Day");
         } else if (apiCallString.equals("week")){

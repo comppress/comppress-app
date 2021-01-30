@@ -18,14 +18,14 @@ public interface JsonPlaceHolderApi {
     @GET("contents")
     Call<List<Content>> getContents();
 
-    @GET("data?listLength=50")
-    Call<List<Data>> getData();
+    //@GET("data?listLength=50")
+    //Call<List<Data>> getData();
 
-    @GET("ratedNews")
-    Call<List<Data>> ratedNews();
+    //@GET("ratedNews")
+    //Call<List<Data>> ratedNews();
 
-    @GET("latestNews")
-    Call<List<Data>> latestNews();
+    //@GET("latestNews")
+    //Call<List<Data>> latestNews();
 
     @POST("postRating")
     Call<Void> getRating(@Body RatingPojo ratingPojo);
@@ -33,12 +33,12 @@ public interface JsonPlaceHolderApi {
     @GET("userReference")
     Call<Long> sendUserReference(@Query("name") String name);
 
-    @GET("day?listLength=50")
+    @GET("day")
     Call<List<Data>> getNewsOfDay();
 
-    @GET("articles?interval=week&listLength=50")
+    @GET("articles?interval=week")
     Call<List<Data>> getNewsOfWeek();
 
-    @GET("articles?interval=month&listLength=50")
+    @GET("articles?interval=month")
     Call<List<Data>> getNewsOfMonth();
 }
