@@ -1,0 +1,2 @@
+rootProject.name='COMPPRESS'
+include ':app'
