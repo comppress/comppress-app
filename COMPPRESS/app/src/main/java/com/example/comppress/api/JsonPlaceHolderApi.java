@@ -1,8 +1,8 @@
 package com.example.comppress.api;
 
 import com.example.comppress.json_model.Content;
-import com.example.comppress.json_model.Data;
-import com.example.comppress.json_model.RatingPojo;
+import com.example.comppress.json_model.Feed;
+import com.example.comppress.json_model.Rating;
 
 import java.util.List;
 
@@ -26,18 +26,28 @@ public interface JsonPlaceHolderApi {
     //@GET("latestNews")
     //Call<List<Data>> latestNews();
 
-    @POST("postRating")
-    Call<Void> getRating(@Body RatingPojo ratingPojo);
+    //@POST("postRating")
+    //Call<Void> getRating(@Body RatingPojo ratingPojo);
+
+    @POST("ratings")
+    Call<Void> getRating(@Body Rating rating);
 
     @GET("userReference")
     Call<Long> sendUserReference(@Query("name") String name);
 
-    @GET("day")
-    Call<List<Data>> getNewsOfDay();
+    //@GET("day")
+    //Call<List<Data>> getNewsOfDay();
+    //
+    //@GET("articles?interval=week")
+    //Call<List<Data>> getNewsOfWeek();
+    //
+    //@GET("articles?interval=month")
+    //Call<List<Data>> getNewsOfMonth();
 
-    @GET("articles?interval=week")
-    Call<List<Data>> getNewsOfWeek();
-
-    @GET("articles?interval=month")
-    Call<List<Data>> getNewsOfMonth();
+    @GET("feeds?timeFrame=day")
+    Call<List<Feed>> getNewsOfDay();
+    @GET("feeds?timeFrame=week")
+    Call<List<Feed>> getNewsOfWeek();
+    @GET("feeds?timeFrame=month")
+    Call<List<Feed>> getNewsOfMonth();
 }

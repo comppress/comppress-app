@@ -7,8 +7,8 @@ import android.widget.ProgressBar;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.comppress.activity.MainActivity;
-import com.example.comppress.json_model.Data;
-import com.example.comppress.json_model.RatingPojo;
+import com.example.comppress.json_model.Feed;
+import com.example.comppress.json_model.Rating;
 
 import java.util.List;
 
@@ -35,8 +35,8 @@ public class ApiRepository {
         jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
     }
 
-    public void apiCallGetNews(final ProgressBar progressBar, final RecyclerView.Adapter adapter, final List<Data> dataList, String apiCallString) {
-        Call<List<Data>> call = null;
+    public void apiCallGetNews(final ProgressBar progressBar, final RecyclerView.Adapter adapter, final List<Feed> feedList, String apiCallString) {
+        Call<List<Feed>> call = null;
         if /*(apiCallString.equals("ratedNews")) {
             call = jsonPlaceHolderApi.ratedNews();
             Log.i("Info", "BestRated");
@@ -55,10 +55,10 @@ public class ApiRepository {
         }
         // Cant run this on the UI Thread, Retrofit runs it for us on a background thread
         assert call != null;
-        call.enqueue(new Callback<List<Data>>() {
+        call.enqueue(new Callback<List<Feed>>() {
 
             @Override
-            public void onResponse(Call<List<Data>> call, Response<List<Data>> response) {
+            public void onResponse(Call<List<Feed>> call, Response<List<Feed>> response) {
                 if (!response.isSuccessful()) {
                     Log.i(TAG, "apiCallData return Code != 200");
                     return;
@@ -66,25 +66,25 @@ public class ApiRepository {
 
                 progressBar.setVisibility(View.GONE);
 
-                List<Data> responseDataList = response.body();
+                List<Feed> responseFeedList = response.body();
 
-                assert responseDataList != null;
-                dataList.addAll(responseDataList);
+                assert responseFeedList != null;
+                feedList.addAll(responseFeedList);
                 adapter.notifyDataSetChanged();
 
             }
 
             @Override
-            public void onFailure(Call<List<Data>> call, Throwable t) {
+            public void onFailure(Call<List<Feed>> call, Throwable t) {
                 progressBar.setVisibility(View.GONE);
                 Log.e(TAG, "apiCallData: ", t);
             }
         });
     }
 
-    public void apiCallContent(RatingPojo ratingPojo){
+    public void apiCallContent(Rating rating){
 
-        Call<Void> call = jsonPlaceHolderApi.getRating(ratingPojo);
+        Call<Void> call = jsonPlaceHolderApi.getRating(rating);
         // Cant run this on the UI Thread, Retrofit runs it for us on a background thread
         call.enqueue(new Callback<Void>() {
 

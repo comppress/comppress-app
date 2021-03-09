@@ -13,19 +13,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.comppress.R;
 import com.example.comppress.json_model.Data;
+import com.example.comppress.json_model.Feed;
 
 import java.util.List;
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder>{
 
     private Context context;
-    private List<Data> dataList;
+    private List<Feed> feedList;
     private ContentAdapter horizontalAdapter;
     private RecyclerView.RecycledViewPool recycledViewPool;
     private int counter = 0;
 
-    public HomeAdapter(List<Data> data, Context context) {
-        this.dataList = data;
+    public HomeAdapter(List<Feed> feed, Context context) {
+        this.feedList = feed;
         this.context = context;
         recycledViewPool = new RecyclerView.RecycledViewPool();
     }
@@ -35,15 +36,14 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
     @Override
     public HomeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View theView = LayoutInflater.from(context).inflate(R.layout.row_layout_landingpage, parent, false);
-        HomeViewHolder homeViewHolder = new HomeViewHolder(theView);
-        return homeViewHolder;
+        return new HomeViewHolder(theView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull HomeViewHolder holder, final int position) {
-        holder.horizontalManager.scrollToPosition(dataList.get(position).getPositionRatedNewsStart()-1);
-        holder.textViewCategory.setText(dataList.get(position).getCategory());
-        horizontalAdapter = new ContentAdapter(dataList.get(position).getListContent(), context);
+        holder.horizontalManager.scrollToPosition(feedList.get(position).getPositionRatedNewsStart()-1);
+        holder.textViewCategory.setText(feedList.get(position).getCategory());
+        horizontalAdapter = new ContentAdapter(feedList.get(position).getListContent(), context);
         holder.recyclerViewHorizontal.setAdapter(horizontalAdapter);
         holder.recyclerViewHorizontal.setRecycledViewPool(recycledViewPool);
     }
@@ -51,7 +51,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
 
     @Override
     public int getItemCount() {
-        return dataList.size();
+        return feedList.size();
     }
 
 

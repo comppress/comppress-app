@@ -17,6 +17,7 @@ import com.example.comppress.R;
 import com.example.comppress.adapter.HomeAdapter;
 import com.example.comppress.api.ApiRepository;
 import com.example.comppress.json_model.Data;
+import com.example.comppress.json_model.Feed;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +27,7 @@ public class ContentMonth <val> extends Fragment {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
-    private List<Data> dataList;
+    private List<Feed> feedList;
     private SwipeRefreshLayout swipeRefreshLayout;
     private FragmentTransaction fragmentTransaction;
 
@@ -36,8 +37,8 @@ public class ContentMonth <val> extends Fragment {
         recyclerView = rootView.findViewById(R.id.rv_landingpage);
         progressBar = rootView.findViewById(R.id.pb_landingpage);
 
-        dataList = new ArrayList<>();
-        adapter = new HomeAdapter(dataList, getActivity());
+        feedList = new ArrayList<>();
+        adapter = new HomeAdapter(feedList, getActivity());
 
         layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
 
@@ -46,7 +47,7 @@ public class ContentMonth <val> extends Fragment {
         recyclerView.setAdapter(adapter);
 
         final ApiRepository apiRepository = new ApiRepository(getResources().getString(R.string.base_url));
-        apiRepository.apiCallGetNews(progressBar, adapter, dataList, "month");
+        apiRepository.apiCallGetNews(progressBar, adapter, feedList, "month");
 
         swipeRefreshLayout = rootView.findViewById(R.id.swipe_refresh_layout);
         swipeRefreshLayout.setOnRefreshListener(

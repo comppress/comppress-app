@@ -25,8 +25,8 @@ import com.example.comppress.R;
 import com.example.comppress.adapter.CustomExpandableListAdapter;
 import com.example.comppress.api.ApiRepository;
 import com.example.comppress.json_model.Rating;
-import com.example.comppress.json_model.RatingPojo;
 import com.example.comppress.views.ExpandableListDataPump;
+import com.example.comppress.views.NestedWebView;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 
 import java.util.ArrayList;
@@ -62,7 +62,7 @@ public class ReaderActivity extends AppCompatActivity {
                 finish();}
         });
 
-        WebView webView = findViewById(R.id.reader_webView);
+        NestedWebView webView = findViewById(R.id.reader_webView);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.setWebViewClient(new WebViewClient(){
             //Enables Whatsapp and Mail Share-Buttons on sites in WebView
@@ -96,6 +96,7 @@ public class ReaderActivity extends AppCompatActivity {
         return true;
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -105,7 +106,7 @@ public class ReaderActivity extends AppCompatActivity {
                 return true;*/
 
             case R.id.favorite:
-                Toast.makeText(getApplicationContext(),"Zu Favoriten hinzufügen (Soon™)", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"Zu Favoriten hinzufügen (In Planung)", Toast.LENGTH_SHORT).show();
                 return true;
 
             case R.id.browser:
@@ -171,7 +172,7 @@ public class ReaderActivity extends AppCompatActivity {
         final AlertDialog dialog = new AlertDialog.Builder(this)
                 .setView(myList)
                 .setTitle("Bewertung")
-                .setPositiveButton(android.R.string.ok, null) //Set to null. We override the onclick
+                .setPositiveButton(R.string.rate, null) //Set to null. We override the onclick
                 .setNegativeButton(android.R.string.cancel, null)
                 .create();
 
@@ -182,7 +183,7 @@ public class ReaderActivity extends AppCompatActivity {
             @Override
             public void onShow(DialogInterface dialogInterface) {
                 Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
-                positiveButton.setTextSize(20.0f);
+                positiveButton.setTextSize(18);
                 positiveButton.setTextColor(ContextCompat.getColor(getApplicationContext(),R.color.colorAccent));
 
                 positiveButton.setOnClickListener(new View.OnClickListener() {
@@ -197,28 +198,18 @@ public class ReaderActivity extends AppCompatActivity {
 
                         Rating rating = new Rating();
                         rating.setContentId(articleId);
-                        // Top 3
+
                         rating.setCredibility(myAdapter.getRatingPosition(0,0));
                         rating.setNeutrality(myAdapter.getRatingPosition(1,0));
                         rating.setInformativity(myAdapter.getRatingPosition(2,0));
-                        // Sub
-                        /*rating.setFactuality((int) myAdapter.getRatingPosition(0,1));
-                        rating.setSourceTransparency((int) myAdapter.getRatingPosition(0,2));
-                        rating.setPluralityOfViews((int) myAdapter.getRatingPosition(0,3));
-                        // Sub 2
-                        rating.setImpartiality((int) myAdapter.getRatingPosition(1,1));
-                        rating.setDispassion((int) myAdapter.getRatingPosition(1,2));
-                        rating.setXX((int) myAdapter.getRatingPosition(1,3));
-                        // Sub 3
-                        rating.setXX((int) myAdapter.getRatingPosition(2,1));
-                        rating.setXX((int) myAdapter.getRatingPosition(2,2));
-                        rating.setXX((int) myAdapter.getRatingPosition(2,3));*/
 
-                        RatingPojo ratingPojo = new RatingPojo();
-                        ratingPojo.setRating(rating);
-                        ratingPojo.setUserReference(MainActivity.userReference);
-                        ratingPojo.getRating().setPersonId(MainActivity.personId);
-                        // Return type void
+                        rating.setPersonId(MainActivity.personId);
+
+                        //RatingPojo ratingPojo = new RatingPojo();
+                        //ratingPojo.setRating(rating);
+                        //ratingPojo.setUserReference(MainActivity.userReference);
+                        //ratingPojo.getRating().setPersonId(MainActivity.personId);
+
 
                         boolean allRatingsTicked = true;
 
@@ -228,12 +219,12 @@ public class ReaderActivity extends AppCompatActivity {
 
                         if (allRatingsTicked){
                             final ApiRepository apiRepository = new ApiRepository(getResources().getString(R.string.base_url));
-                            apiRepository.apiCallContent(ratingPojo);
+                            apiRepository.apiCallContent(rating);
                             Toast.makeText(getApplicationContext(),"Bewertung erfolgreich", Toast.LENGTH_SHORT).show();
                             //TODO: Intent for successful rating
                             dialog.dismiss();
                         } else {
-                        Toast.makeText(getApplicationContext(),"Bitte bewerte alle Kriterien", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),"Bitte bewerten Sie alle Kriterien", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

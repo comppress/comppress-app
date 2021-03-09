@@ -23,12 +23,14 @@
     <string name="close">\"Schließen\"</string>
     <string name="login_logo">Login Logo</string>
     <string name="rate">Bewerten</string>
+    <string name="cancel">Abbrechen</string>
     <string name="day">Tag</string>
     <string name="week">Woche</string>
     <string name="month">Monat</string>
     <string name="source">Quelle</string>
     <string name="title">TITEL - Lorem ipsum dolor sit amet, consetetur - TITEL</string>
-    <string name="time">vor 60 Minuten</string>
+    <string name="time">Today</string>
     <string name="rating">Neu</string>
+    <string name="rating_count">999</string>
     <string name="article_image">Artikelbild</string>
 </resources>

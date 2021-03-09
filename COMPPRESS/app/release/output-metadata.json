@@ -4,7 +4,7 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "com.example.couscousapp",
+  "applicationId": "com.example.comppress",
   "variantName": "processReleaseResources",
   "elements": [
     {

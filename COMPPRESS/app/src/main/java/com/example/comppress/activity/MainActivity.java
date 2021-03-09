@@ -10,9 +10,12 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -62,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        final TabLayout tabLayout = (TabLayout) findViewById(R.id.tablayout_landingpage);
+        final TabLayout tabLayout = findViewById(R.id.tablayout_landingpage);
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -105,6 +108,32 @@ public class MainActivity extends AppCompatActivity {
         aBarDrawer.syncState();
         NavigationView navView = findViewById(R.id.navigation);
 
+        Menu m = navView.getMenu();
+        MenuItem menuItem = m.findItem(R.id.login_drawer);
+        SpannableString s = new SpannableString(menuItem.getTitle());
+        s.setSpan(new ForegroundColorSpan((getResources().getColor(R.color.colorComingSoon))), 0, s.length(), 0);
+        menuItem.setTitle(s);
+
+        menuItem = m.findItem(R.id.settings_drawer);
+        s = new SpannableString(menuItem.getTitle());
+        s.setSpan(new ForegroundColorSpan((getResources().getColor(R.color.colorComingSoon))), 0, s.length(), 0);
+        menuItem.setTitle(s);
+
+        menuItem = m.findItem(R.id.settings_drawer);
+        s = new SpannableString(menuItem.getTitle());
+        s.setSpan(new ForegroundColorSpan((getResources().getColor(R.color.colorComingSoon))), 0, s.length(), 0);
+        menuItem.setTitle(s);
+
+        menuItem = m.findItem(R.id.github_drawer);
+        s = new SpannableString(menuItem.getTitle());
+        s.setSpan(new ForegroundColorSpan((getResources().getColor(R.color.colorComingSoon))), 0, s.length(), 0);
+        menuItem.setTitle(s);
+
+        menuItem = m.findItem(R.id.supportchat_drawer);
+        s = new SpannableString(menuItem.getTitle());
+        s.setSpan(new ForegroundColorSpan((getResources().getColor(R.color.colorComingSoon))), 0, s.length(), 0);
+        menuItem.setTitle(s);
+
         navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -112,21 +141,21 @@ public class MainActivity extends AppCompatActivity {
                 switch(id)
                 {
                     case R.id.login_drawer:
-                        Toast.makeText(MainActivity.this, "Einloggen (Soon™)",Toast.LENGTH_SHORT).show();break;
+                        Toast.makeText(MainActivity.this, "Einloggen (In Planung)",Toast.LENGTH_SHORT).show();break;
                     case R.id.settings_drawer:
-                        Toast.makeText(MainActivity.this, "Einstellungen (Soon™)",Toast.LENGTH_SHORT).show();break;
+                        Toast.makeText(MainActivity.this, "Einstellungen (In Planung)",Toast.LENGTH_SHORT).show();break;
                     case R.id.download_drawer:
-                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://comppress.de/wp-content/uploads/CouscousApp.apk")));break;
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://comppress.de/wp-content/uploads/comppress.apk")));break;
                     case R.id.homepage_drawer:
-                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://comppress.de/")));break;
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://comppress.org/")));break;
                     case R.id.join_drawer:
-                        Toast.makeText(MainActivity.this, "Mitglied werden (Soon™)",Toast.LENGTH_SHORT).show();break;
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://comppress.org/index.php/support/#mitglied")));break;
                     case R.id.donate_drawer:
-                        Toast.makeText(MainActivity.this, "Spenden (Soon™)", Toast.LENGTH_SHORT).show();break;
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://comppress.org/index.php/support/#spenden")));break;
                     case R.id.github_drawer:
-                        Toast.makeText(MainActivity.this, "Github (Soon™)",Toast.LENGTH_SHORT).show();break;
+                        Toast.makeText(MainActivity.this, "Github (In Planung)",Toast.LENGTH_SHORT).show();break;
                     case R.id.supportchat_drawer:
-                        Toast.makeText(MainActivity.this, "Support Chat (Soon™)", Toast.LENGTH_SHORT).show();break;
+                        Toast.makeText(MainActivity.this, "Support Chat (In Planung)", Toast.LENGTH_SHORT).show();break;
                     default:
                         return true;
                 }
@@ -156,12 +185,12 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.search:
                 // User chose the "Search" item, show the app settings UI...
-                Toast.makeText(this, "Suche (Soon™)", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Suche (In Planung)", Toast.LENGTH_SHORT).show();
                 return true;
 
             case R.id.filter:
                 // User chose the "Filter" item, show the app settings UI...
-                Toast.makeText(this, "Inhalte filtern (Soon™)", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Inhalte filtern (In Planung)", Toast.LENGTH_SHORT).show();
                 return true;
 
             default:

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:theme="@style/AppTheme"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -15,7 +16,6 @@
             android:id="@+id/tb_reader"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:theme="@style/Theme.MaterialComponents.Light"
             app:layout_scrollFlags="scroll|enterAlways|snap"
             app:navigationIcon="@drawable/arrow_back_24px" />
 
@@ -49,7 +49,8 @@
         android:textSize="16sp"
         app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
         app:backgroundTint="@color/colorPrimaryDark"
-        app:icon="@drawable/grade_24px"
+        app:icon="@drawable/grade_black_24dp"
+        app:iconTint="@color/colorStarTop"
         android:onClick="expandableRating"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

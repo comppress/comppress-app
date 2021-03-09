@@ -7,6 +7,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class Content {
@@ -20,6 +21,10 @@ public class Content {
     private String category;
     @SerializedName("rssFeedId")
     private String rssFeedId2;
+    private Long countRating;
+    private Double averageRating;
+    private Double sumRating;
+    private String source;
 
     public void setId(Integer id) {
         this.id = id;
@@ -73,6 +78,30 @@ public class Content {
         return description;
     }
 
+    public Long getCountRating() {
+        return countRating;
+    }
+
+    public void setCountRating(Long countRating) {
+        this.countRating = countRating;
+    }
+
+    public Double getAverageRating() {
+        return averageRating;
+    }
+
+    public void setAverageRating(Double averageRating) {
+        this.averageRating = averageRating;
+    }
+
+    public Double getSumRating() {
+        return sumRating;
+    }
+
+    public void setSumRating(Double sumRating) {
+        this.sumRating = sumRating;
+    }
+
     public String getCreationDate() {
         if (creationDate == null) {
             Log.i("Info", "Creation date of content is null");
@@ -92,8 +121,14 @@ public class Content {
         long format = 0;
         if (diff > DateUtils.WEEK_IN_MILLIS) {
             format = DateUtils.WEEK_IN_MILLIS;
-        } else if (diff <= DateUtils.WEEK_IN_MILLIS) {
+        } else if (diff <= DateUtils.WEEK_IN_MILLIS && diff > DateUtils.DAY_IN_MILLIS) {
             format = DateUtils.DAY_IN_MILLIS;
+        } else if (diff <= DateUtils.DAY_IN_MILLIS && diff > DateUtils.HOUR_IN_MILLIS) {
+            format = DateUtils.HOUR_IN_MILLIS;
+        } else if (diff <= DateUtils.HOUR_IN_MILLIS && diff > DateUtils.MINUTE_IN_MILLIS) {
+            format = DateUtils.MINUTE_IN_MILLIS;
+        } else if (diff <= DateUtils.MINUTE_IN_MILLIS) {
+            format = DateUtils.SECOND_IN_MILLIS;
         }
         CharSequence parsedDate = DateUtils.getRelativeTimeSpanString(milliseconds, now, format);
         return parsedDate.toString();
@@ -105,5 +140,13 @@ public class Content {
 
     public String getRssFeedId2() {
         return rssFeedId2;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
+    }
+
+    public String getSource() {
+        return source;
     }
 }

@@ -14,7 +14,7 @@ public class ExpandableListDataPump {
 //        criterion1.add("Verschiedenartige Quellen");
 
         List<String> criterion2 = new ArrayList<String>();
-        criterion2.add("- Sind die Argumente / Werteurteile belegt?\n- Werden diese reflektiert?\n- Bedient sicht der Autor einer logischen\n  Argumentation?");
+        criterion2.add("- Sind die Argumente belegt?\n- Werden diese reflektiert?\n- Bedient sich der Autor einer logischen\n  Argumentation?");
 //        criterion2.add("Werturteile reflektiert");
 //        criterion2.add("Argumentation logisch");
 

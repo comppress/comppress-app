@@ -35,19 +35,40 @@
                     app:tint="#32000000"
                     android:contentDescription="@string/article_image" />
 
-                <TextView
-                    android:id="@+id/text_view_rating"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="4dp"
-                    android:layout_toStartOf="@id/text_view_missing_image"
-                    android:shadowColor="#000000"
-                    android:shadowRadius="2"
-                    android:text="@string/rating"
-                    android:textColor="#FFFFFF"
-                    android:textSize="22sp"
-                    android:textStyle="bold" />
+                    android:layout_alignEnd="@id/image_view_content"
+                    android:layout_marginEnd="2dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/text_view_rating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end|end"
+                        android:shadowColor="#000000"
+                        android:shadowRadius="2"
+                        android:text="@string/rating"
+                        android:textAlignment="textEnd"
+                        android:textColor="#FFFFFF"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/text_view_count_ratings"
+                        android:layout_width="wrap_content"
+                        android:layout_gravity="end|end"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:maxLines="1"
+                        android:text="@string/rating_count"
+                        android:textColor="#FFFFFF"
+                        android:shadowColor="#000000"
+                        android:shadowRadius="2"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
 
                 <TextView
                     android:id="@+id/text_view_missing_image"
@@ -75,6 +96,8 @@
                     android:id="@+id/text_view_source"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginEnd="2dp"
                     android:maxLines="1"
                     android:text="@string/source"
                     android:textAppearance="?android:textAppearanceSmall" />
@@ -83,6 +106,8 @@
                     android:id="@+id/text_view_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginEnd="2dp"
                     android:ellipsize="end"
                     android:fontFamily="sans-serif"
                     android:maxLines="4"
@@ -94,11 +119,13 @@
                 <TextView
                     android:id="@+id/text_view_date"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginEnd="2dp"
+                    android:layout_weight="1"
                     android:maxLines="1"
                     android:text="@string/time"
                     android:textAppearance="?android:textAppearanceSmall" />
-
 
             </LinearLayout>
 
