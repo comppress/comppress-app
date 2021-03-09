@@ -54,7 +54,6 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ContentV
         holder.textViewTitle.setText(content.getTitle());
         // holder.textViewTitle.setText(content.getImageLink()); //Check image link
         holder.textViewCreationDate.setText(content.getCreationDate());
-        //TODO content.getSource()
         holder.textViewSource.setText(content.getSource());
 
         //TODO
@@ -71,7 +70,6 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ContentV
         }
 
         if (content.getImageLink().equals("not implemented")) {
-            //TODO content.getSource()
             holder.textViewMissingImage.setText(content.getSource());
         } else {
             holder.textViewMissingImage.setText("");
