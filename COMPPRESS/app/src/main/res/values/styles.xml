@@ -13,8 +13,4 @@
         <item name="colorControlActivated">@color/colorStarTop</item>
     </style>
 
-    <style name="RatingBarSub" parent="Theme.AppCompat">
-        <item name="colorControlNormal">@color/colorPrimaryDark2</item>
-        <item name="colorControlActivated">@color/colorStarSub</item>
-    </style>
 </resources>

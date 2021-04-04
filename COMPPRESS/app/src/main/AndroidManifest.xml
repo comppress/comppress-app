@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.comppress">
+    package="org.comppress.android">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name="org.comppress.android.App"
         android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,21 +13,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.example.comppress.activity.LoginActivity">
+        <activity android:name="org.comppress.android.activity.LoginActivity">
         </activity>
-        <activity android:name="com.example.comppress.activity.MainActivity">
+        <activity android:name="org.comppress.android.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.comppress.activity.ReaderActivity"
+            android:name="org.comppress.android.activity.ReaderActivity"
             android:label="@string/label_reader"
-            android:parentActivityName="com.example.comppress.activity.MainActivity">
+            android:parentActivityName="org.comppress.android.activity.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.comppress.activity.MainActivity"/>
+                android:value="org.comppress.android.activity.MainActivity"/>
         </activity>
 
 <!--        Currently unused-->

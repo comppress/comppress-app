@@ -4,34 +4,34 @@
     <item
         android:id="@+id/login_drawer"
         android:icon="@drawable/login_black_24dp"
-        android:title="Einloggen"/>
+        android:title="@string/login"/>
     <item
         android:id="@+id/settings_drawer"
         android:icon="@drawable/settings_black_24dp"
-        android:title="Einstellungen" />
+        android:title="@string/settings" />
     <item
         android:id="@+id/download_drawer"
         android:icon="@drawable/get_app_black_24dp"
-        android:title="Update App"/>
+        android:title="@string/update"/>
     <group android:id="@+id/group1">
         <item
             android:id="@+id/homepage_drawer"
             android:icon="@drawable/home_24dp"
-            android:title="Homepage"/>
+            android:title="@string/website"/>
         <item
             android:id="@+id/join_drawer"
             android:icon="@drawable/group_add_24dp"
-            android:title="Mitglied werden"/>
+            android:title="@string/join"/>
         <item android:id="@+id/donate_drawer"
             android:icon="@drawable/heart_24px"
-            android:title="Spenden"/>
+            android:title="@string/donate"/>
         <item
             android:id="@+id/github_drawer"
             android:icon="@drawable/github_24dp"
-            android:title="Github"/>
+            android:title="@string/github"/>
         <item
             android:id="@+id/supportchat_drawer"
             android:icon="@drawable/chat_24dp"
-            android:title="Support Chat"/>
+            android:title="@string/support_chat"/>
     </group>
 </menu>

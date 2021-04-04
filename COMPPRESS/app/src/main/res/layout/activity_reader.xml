@@ -21,7 +21,7 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-        <com.example.comppress.views.NestedWebView
+        <org.comppress.android.views.NestedWebView
             android:id="@+id/reader_webView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

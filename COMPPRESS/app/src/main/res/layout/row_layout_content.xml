@@ -49,7 +49,7 @@
                         android:layout_gravity="end|end"
                         android:shadowColor="#000000"
                         android:shadowRadius="2"
-                        android:text="@string/rating"
+                        android:text="@string/rating_null"
                         android:textAlignment="textEnd"
                         android:textColor="#FFFFFF"
                         android:textSize="20sp"
