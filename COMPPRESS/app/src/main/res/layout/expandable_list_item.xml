@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:descendantFocusability="blocksDescendants">
     <TextView
+        android:hyphenationFrequency="normal"
         android:id="@+id/subCriterion"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"

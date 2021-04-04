@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">COMPPRESS</string>
+    <string name="label_reader">Reader View</string>
+    <string name="base_url">http://app.comppress.org:8080/</string>
+    <string name="hint_username">Benutzername</string>
+    <string name="hint_password">Passwort</string>
+    <string name="login">Einloggen</string>
+    <string name="search">Suche</string>
+    <string name="filter">Inhalte filtern</string>
+    <string name="add_to_favorites">Zu Favoriten hinzufügen</string>
+    <string name="open_in_browser">Im Browser öffnen</string>
+    <string name="open">\"Öffnen\"</string>
+    <string name="close">\"Schließen\"</string>
+    <string name="login_logo">Login Logo</string>
+    <string name="rate">Bewerten</string>
+    <string name="cancel">Abbrechen</string>
+    <string name="day">Tag</string>
+    <string name="week">Woche</string>
+    <string name="month">Monat</string>
+    <string name="source">Quelle</string>
+    <string name="title">TITEL - Lorem ipsum dolor sit amet, consetetur - TITEL</string>
+    <string name="time">Today</string>
+    <string name="rating_null">Neu</string>
+    <string name="rating_count">999</string>
+    <string name="article_image">Artikelbild</string>
+    <string name="settings">Einstellungen</string>
+    <string name="lang_switch"></string>
+    <string name="update">Update App</string>
+    <string name="website">Webseite</string>
+    <string name="join">Mitglied werden</string>
+    <string name="donate">Spenden</string>
+    <string name="github">Github</string>
+    <string name="support_chat">Support Chat</string>
+    <string name="in_progress">(In Planung)</string>
+    <string name="rating">Bewertung</string>
+    <string name="rating_successful">Bewertung erfolgreich</string>
+    <string name="rating_error">Bitte bewerten Sie alle Kriterien</string>
+    <string name="criterion1">Sorgfältige Quellenarbeit</string>
+    <string name="criterion2">Plausible Argumentation</string>
+    <string name="criterion3">Ausgewogene Berichterstattung</string>
+    <string name="criterion1_description">- Sind die Aussagen des Textes belegt?\n- Werden unterschiedliche Quellen genannt?</string>
+    <string name="criterion2_description">- Sind die Argumente belegt?\n- Werden diese reflektiert?\n- Bedient sich der Autor einer logischen\n Argumentation?</string>
+    <string name="criterion3_description">- Werden unterschiedliche Argumentations-\n standpunkte wiedergegeben?\n- Wird fair und ausgewogen berichtet?</string>
+</resources>
