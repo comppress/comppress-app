@@ -35,7 +35,7 @@
             android:title="@string/support_chat"/>
         <item
             android:id="@+id/licence_drawer"
-            android:icon="@drawable/chat_24dp"
+            android:icon="@drawable/approval_black_24dp"
             android:title="@string/licence"/>
     </group>
 </menu>
