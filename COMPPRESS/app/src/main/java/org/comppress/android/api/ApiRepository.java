@@ -44,13 +44,13 @@ public class ApiRepository {
             call = jsonPlaceHolderApi.latestNews();
             Log.i("Info", "Latest");
         } else if */ (apiCallString.equals("day")){
-            call = jsonPlaceHolderApi.getNewsOfDay();
+            call = jsonPlaceHolderApi.getNewsOfDay(MainActivity.language);
             Log.i("Info", "Day");
         } else if (apiCallString.equals("week")){
-            call = jsonPlaceHolderApi.getNewsOfWeek();
+            call = jsonPlaceHolderApi.getNewsOfWeek(MainActivity.language);
             Log.i("Info", "Week");
         } else if (apiCallString.equals("month")){
-            call = jsonPlaceHolderApi.getNewsOfMonth();
+            call = jsonPlaceHolderApi.getNewsOfMonth(MainActivity.language);
             Log.i("Info", "Month");
         }
         // Cant run this on the UI Thread, Retrofit runs it for us on a background thread
@@ -84,7 +84,7 @@ public class ApiRepository {
 
     public void apiCallContent(Rating rating){
 
-        Call<Void> call = jsonPlaceHolderApi.getRating(rating);
+        Call<Void> call = jsonPlaceHolderApi.getRating(rating, MainActivity.language);
         // Cant run this on the UI Thread, Retrofit runs it for us on a background thread
         call.enqueue(new Callback<Void>() {
 
@@ -105,7 +105,7 @@ public class ApiRepository {
 
     public void apiCallUserReference(String userReference){
 
-        Call<Long> call = jsonPlaceHolderApi.sendUserReference(userReference);
+        Call<Long> call = jsonPlaceHolderApi.sendUserReference(MainActivity.language, userReference);
         // Cant run this on the UI Thread, Retrofit runs it for us on a background thread
         call.enqueue(new Callback<Long>() {
 

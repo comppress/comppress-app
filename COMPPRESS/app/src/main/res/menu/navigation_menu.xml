@@ -10,9 +10,9 @@
         android:icon="@drawable/settings_black_24dp"
         android:title="@string/settings" />
     <item
-        android:id="@+id/download_drawer"
-        android:icon="@drawable/get_app_black_24dp"
-        android:title="@string/update"/>
+        android:id="@+id/language_drawer"
+        android:icon="@drawable/language_black_24dp"
+        android:title="@string/language"/>
     <group android:id="@+id/group1">
         <item
             android:id="@+id/homepage_drawer"
@@ -22,9 +22,9 @@
             android:id="@+id/join_drawer"
             android:icon="@drawable/group_add_24dp"
             android:title="@string/join"/>
-        <item android:id="@+id/donate_drawer"
-            android:icon="@drawable/heart_24px"
-            android:title="@string/donate"/>
+        <item android:id="@+id/publisher_drawer"
+            android:icon="@drawable/article_black_24dp"
+            android:title="@string/publishers"/>
         <item
             android:id="@+id/github_drawer"
             android:icon="@drawable/github_24dp"
@@ -33,5 +33,9 @@
             android:id="@+id/supportchat_drawer"
             android:icon="@drawable/chat_24dp"
             android:title="@string/support_chat"/>
+        <item
+            android:id="@+id/licence_drawer"
+            android:icon="@drawable/chat_24dp"
+            android:title="@string/licence"/>
     </group>
 </menu>

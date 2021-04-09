@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static String userReference;
     public static Long personId;
+    public static String language;
 
     private ActionBarDrawerToggle aBarDrawer;
     private FragmentManager fragmentManager;
@@ -44,6 +45,13 @@ public class MainActivity extends AppCompatActivity {
     @SuppressLint("HardwareIds")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        language = Locale.getDefault().getLanguage();
+        if (!language.equals("de")) {
+
+            language = "en";
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing_page_f);
 
@@ -144,14 +152,24 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, getString(R.string.login) + " " + getString(R.string.in_progress),Toast.LENGTH_SHORT).show();break;
                     case R.id.settings_drawer:
                         Toast.makeText(MainActivity.this, getString(R.string.settings) + " " + getString(R.string.in_progress),Toast.LENGTH_SHORT).show();break;
-                    case R.id.download_drawer:
-                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://comppress.de/wp-content/uploads/comppress.apk")));break;
+                    case R.id.language_drawer:
+                        if (language.equals("de")) {
+                            language = "en";
+                        } else {
+                            language = "de";
+                        }
+                        final ContentDay fragmentDay = new ContentDay();
+                        fragmentManager = getSupportFragmentManager();
+                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                        fragmentTransaction.add(R.id.fragment_placeholder, fragmentDay);
+                        fragmentTransaction.commit();
+                        break;
                     case R.id.homepage_drawer:
                         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://comppress.org/")));break;
                     case R.id.join_drawer:
                         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://comppress.org/index.php/support/#mitglied")));break;
-                    case R.id.donate_drawer:
-                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://comppress.org/index.php/support/#spenden")));break;
+                    case R.id.publisher_drawer:
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://comppress.org/index.php/publisher-information/")));break;
                     case R.id.github_drawer:
                         Toast.makeText(MainActivity.this, getString(R.string.github) + " " + getString(R.string.in_progress),Toast.LENGTH_SHORT).show();break;
                     case R.id.supportchat_drawer:

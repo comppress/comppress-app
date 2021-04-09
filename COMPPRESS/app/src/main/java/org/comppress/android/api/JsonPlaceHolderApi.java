@@ -10,12 +10,13 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface JsonPlaceHolderApi {
 
-    @GET("contents")
-    Call<List<Content>> getContents();
+    @GET("{language}/contents")
+    Call<List<Content>> getContents(@Path("language") String language);
 
     //@GET("data?listLength=50")
     //Call<List<Data>> getData();
@@ -29,11 +30,11 @@ public interface JsonPlaceHolderApi {
     //@POST("postRating")
     //Call<Void> getRating(@Body RatingPojo ratingPojo);
 
-    @POST("ratings")
-    Call<Void> getRating(@Body Rating rating);
+    @POST("{language}/ratings")
+    Call<Void> getRating(@Body Rating rating, @Path("language") String language);
 
-    @GET("userReference")
-    Call<Long> sendUserReference(@Query("name") String name);
+    @GET("{language}/userReference")
+    Call<Long> sendUserReference(@Path("language") String language, @Query("name") String name);
 
     //@GET("day")
     //Call<List<Data>> getNewsOfDay();
@@ -44,10 +45,10 @@ public interface JsonPlaceHolderApi {
     //@GET("articles?interval=month")
     //Call<List<Data>> getNewsOfMonth();
 
-    @GET("feeds?timeFrame=day")
-    Call<List<Feed>> getNewsOfDay();
-    @GET("feeds?timeFrame=week")
-    Call<List<Feed>> getNewsOfWeek();
-    @GET("feeds?timeFrame=month")
-    Call<List<Feed>> getNewsOfMonth();
+    @GET("{language}/feeds?timeFrame=day")
+    Call<List<Feed>> getNewsOfDay(@Path("language") String language);
+    @GET("{language}/feeds?timeFrame=week")
+    Call<List<Feed>> getNewsOfWeek(@Path("language") String language);
+    @GET("{language}/feeds?timeFrame=month")
+    Call<List<Feed>> getNewsOfMonth(@Path("language") String language);
 }
