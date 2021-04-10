@@ -127,21 +127,6 @@ public class MainActivity extends AppCompatActivity {
         s.setSpan(new ForegroundColorSpan((getResources().getColor(R.color.colorComingSoon))), 0, s.length(), 0);
         menuItem.setTitle(s);
 
-        menuItem = m.findItem(R.id.settings_drawer);
-        s = new SpannableString(menuItem.getTitle());
-        s.setSpan(new ForegroundColorSpan((getResources().getColor(R.color.colorComingSoon))), 0, s.length(), 0);
-        menuItem.setTitle(s);
-
-        menuItem = m.findItem(R.id.github_drawer);
-        s = new SpannableString(menuItem.getTitle());
-        s.setSpan(new ForegroundColorSpan((getResources().getColor(R.color.colorComingSoon))), 0, s.length(), 0);
-        menuItem.setTitle(s);
-
-        menuItem = m.findItem(R.id.supportchat_drawer);
-        s = new SpannableString(menuItem.getTitle());
-        s.setSpan(new ForegroundColorSpan((getResources().getColor(R.color.colorComingSoon))), 0, s.length(), 0);
-        menuItem.setTitle(s);
-
         navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -167,13 +152,15 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.homepage_drawer:
                         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://comppress.org/")));break;
                     case R.id.join_drawer:
-                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://comppress.org/index.php/support/#mitglied")));break;
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://comppress.org/support/#mitglied")));break;
                     case R.id.publisher_drawer:
-                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://comppress.org/index.php/publisher-information/")));break;
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://comppress.org/publisher-information/")));break;
                     case R.id.github_drawer:
-                        Toast.makeText(MainActivity.this, getString(R.string.github) + " " + getString(R.string.in_progress),Toast.LENGTH_SHORT).show();break;
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/comppress")));break;
                     case R.id.supportchat_drawer:
-                        Toast.makeText(MainActivity.this, getString(R.string.support_chat) + " " + getString(R.string.in_progress), Toast.LENGTH_SHORT).show();break;
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/comppressorg")));break;
+                    case R.id.license_drawer:
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/comppress/comppress-app/blob/master/EXTERNAL_LICENSES")));break;
                     default:
                         return true;
                 }
