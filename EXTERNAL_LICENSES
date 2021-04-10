@@ -1,0 +1,296 @@
+Dependency License Report for app 
+
+1. Group: androidx.activity Name: activity Version: 1.1.0 
+POM Project URL: https://developer.android.com/jetpack/androidx 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+2. Group: androidx.activity Name: activity-ktx Version: 1.1.0 
+POM Project URL: https://developer.android.com/jetpack/androidx 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+3. Group: androidx.annotation Name: annotation Version: 1.1.0 
+POM Project URL: http://developer.android.com/tools/extras/support-library.html 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+4. Group: androidx.annotation Name: annotation-experimental Version: 1.0.0 
+POM Project URL: https://developer.android.com/jetpack/androidx 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+5. Group: androidx.appcompat Name: appcompat Version: 1.2.0 
+POM Project URL: https://developer.android.com/jetpack/androidx 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+6. Group: androidx.appcompat Name: appcompat-resources Version: 1.2.0 
+POM Project URL: https://developer.android.com/jetpack/androidx 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+7. Group: androidx.arch.core Name: core-common Version: 2.1.0 
+POM Project URL: https://developer.android.com/topic/libraries/architecture/index.html 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+8. Group: androidx.arch.core Name: core-runtime Version: 2.1.0 
+POM Project URL: https://developer.android.com/topic/libraries/architecture/index.html 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+9. Group: androidx.asynclayoutinflater Name: asynclayoutinflater Version: 1.0.0 
+POM Project URL: http://developer.android.com/tools/extras/support-library.html 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+10. Group: androidx.cardview Name: cardview Version: 1.0.0 
+POM Project URL: http://developer.android.com/tools/extras/support-library.html 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+11. Group: androidx.collection Name: collection Version: 1.1.0 
+POM Project URL: http://developer.android.com/tools/extras/support-library.html 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+12. Group: androidx.collection Name: collection-ktx Version: 1.1.0 
+POM Project URL: http://developer.android.com/tools/extras/support-library.html 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+13. Group: androidx.constraintlayout Name: constraintlayout Version: 2.0.4 
+POM Project URL: http://tools.android.com 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+14. Group: androidx.constraintlayout Name: constraintlayout-solver Version: 2.0.4 
+POM Project URL: http://tools.android.com 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+15. Group: androidx.coordinatorlayout Name: coordinatorlayout Version: 1.1.0 
+POM Project URL: https://developer.android.com/jetpack/androidx 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+16. Group: androidx.core Name: core Version: 1.3.1 
+POM Project URL: https://developer.android.com/jetpack/androidx 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+17. Group: androidx.core Name: core-ktx Version: 1.1.0 
+POM Project URL: http://developer.android.com/tools/extras/support-library.html 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+18. Group: androidx.cursoradapter Name: cursoradapter Version: 1.0.0 
+POM Project URL: http://developer.android.com/tools/extras/support-library.html 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+19. Group: androidx.customview Name: customview Version: 1.1.0 
+POM Project URL: https://developer.android.com/jetpack/androidx 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+20. Group: androidx.documentfile Name: documentfile Version: 1.0.0 
+POM Project URL: http://developer.android.com/tools/extras/support-library.html 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+21. Group: androidx.drawerlayout Name: drawerlayout Version: 1.1.1 
+POM Project URL: https://developer.android.com/jetpack/androidx 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+22. Group: androidx.dynamicanimation Name: dynamicanimation Version: 1.0.0 
+POM Project URL: http://developer.android.com/tools/extras/support-library.html 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+23. Group: androidx.exifinterface Name: exifinterface Version: 1.0.0 
+POM Project URL: http://developer.android.com/tools/extras/support-library.html 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+24. Group: androidx.fragment Name: fragment Version: 1.2.4 
+POM Project URL: https://developer.android.com/jetpack/androidx 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+25. Group: androidx.fragment Name: fragment-ktx Version: 1.2.4 
+POM Project URL: https://developer.android.com/jetpack/androidx 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+26. Group: androidx.interpolator Name: interpolator Version: 1.0.0 
+POM Project URL: http://developer.android.com/tools/extras/support-library.html 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+27. Group: androidx.legacy Name: legacy-support-core-ui Version: 1.0.0 
+POM Project URL: http://developer.android.com/tools/extras/support-library.html 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+28. Group: androidx.legacy Name: legacy-support-core-utils Version: 1.0.0 
+POM Project URL: http://developer.android.com/tools/extras/support-library.html 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+29. Group: androidx.legacy Name: legacy-support-v4 Version: 1.0.0 
+POM Project URL: http://developer.android.com/tools/extras/support-library.html 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+30. Group: androidx.lifecycle Name: lifecycle-common Version: 2.2.0 
+POM Project URL: https://developer.android.com/topic/libraries/architecture/index.html 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+31. Group: androidx.lifecycle Name: lifecycle-livedata Version: 2.0.0 
+POM Project URL: https://developer.android.com/topic/libraries/architecture/index.html 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+32. Group: androidx.lifecycle Name: lifecycle-livedata-core Version: 2.2.0 
+POM Project URL: https://developer.android.com/topic/libraries/architecture/index.html 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+33. Group: androidx.lifecycle Name: lifecycle-livedata-core-ktx Version: 2.2.0 
+POM Project URL: https://developer.android.com/jetpack/androidx 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+34. Group: androidx.lifecycle Name: lifecycle-runtime Version: 2.2.0 
+POM Project URL: https://developer.android.com/topic/libraries/architecture/index.html 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+35. Group: androidx.lifecycle Name: lifecycle-runtime-ktx Version: 2.2.0 
+POM Project URL: https://developer.android.com/jetpack/androidx 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+36. Group: androidx.lifecycle Name: lifecycle-viewmodel Version: 2.2.0 
+POM Project URL: https://developer.android.com/topic/libraries/architecture/index.html 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+37. Group: androidx.lifecycle Name: lifecycle-viewmodel-ktx Version: 2.2.0 
+POM Project URL: https://developer.android.com/jetpack/androidx 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+38. Group: androidx.lifecycle Name: lifecycle-viewmodel-savedstate Version: 2.2.0 
+POM Project URL: https://developer.android.com/topic/libraries/architecture/index.html 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+39. Group: androidx.loader Name: loader Version: 1.0.0 
+POM Project URL: http://developer.android.com/tools/extras/support-library.html 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+40. Group: androidx.localbroadcastmanager Name: localbroadcastmanager Version: 1.0.0 
+POM Project URL: http://developer.android.com/tools/extras/support-library.html 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+41. Group: androidx.media Name: media Version: 1.0.0 
+POM Project URL: http://developer.android.com/tools/extras/support-library.html 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+42. Group: androidx.navigation Name: navigation-common Version: 2.3.1 
+POM Project URL: https://developer.android.com/topic/libraries/architecture/index.html 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+43. Group: androidx.navigation Name: navigation-common-ktx Version: 2.3.1 
+POM Project URL: https://developer.android.com/topic/libraries/architecture/index.html 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+44. Group: androidx.navigation Name: navigation-fragment Version: 2.3.1 
+POM Project URL: https://developer.android.com/topic/libraries/architecture/index.html 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+45. Group: androidx.navigation Name: navigation-fragment-ktx Version: 2.3.1 
+POM Project URL: https://developer.android.com/topic/libraries/architecture/index.html 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+46. Group: androidx.navigation Name: navigation-runtime Version: 2.3.1 
+POM Project URL: https://developer.android.com/topic/libraries/architecture/index.html 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+47. Group: androidx.navigation Name: navigation-runtime-ktx Version: 2.3.1 
+POM Project URL: https://developer.android.com/topic/libraries/architecture/index.html 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+48. Group: androidx.navigation Name: navigation-ui Version: 2.3.1 
+POM Project URL: https://developer.android.com/topic/libraries/architecture/index.html 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+49. Group: androidx.navigation Name: navigation-ui-ktx Version: 2.3.1 
+POM Project URL: https://developer.android.com/topic/libraries/architecture/index.html 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+50. Group: androidx.print Name: print Version: 1.0.0 
+POM Project URL: http://developer.android.com/tools/extras/support-library.html 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+51. Group: androidx.recyclerview Name: recyclerview Version: 1.1.0 
+POM Project URL: https://developer.android.com/jetpack/androidx 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+52. Group: androidx.recyclerview Name: recyclerview-selection Version: 1.0.0 
+POM Project URL: http://developer.android.com/tools/extras/support-library.html 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+53. Group: androidx.savedstate Name: savedstate Version: 1.0.0 
+POM Project URL: https://developer.android.com/jetpack/androidx 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+54. Group: androidx.slidingpanelayout Name: slidingpanelayout Version: 1.0.0 
+POM Project URL: http://developer.android.com/tools/extras/support-library.html 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+55. Group: androidx.swiperefreshlayout Name: swiperefreshlayout Version: 1.1.0 
+POM Project URL: https://developer.android.com/jetpack/androidx 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+56. Group: androidx.transition Name: transition Version: 1.3.0 
+POM Project URL: https://developer.android.com/jetpack/androidx 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+57. Group: androidx.vectordrawable Name: vectordrawable Version: 1.1.0 
+POM Project URL: https://developer.android.com/jetpack/androidx 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+58. Group: androidx.vectordrawable Name: vectordrawable-animated Version: 1.1.0 
+POM Project URL: https://developer.android.com/jetpack/androidx 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+59. Group: androidx.versionedparcelable Name: versionedparcelable Version: 1.1.0 
+POM Project URL: http://developer.android.com/tools/extras/support-library.html 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+60. Group: androidx.viewpager Name: viewpager Version: 1.0.0 
+POM Project URL: http://developer.android.com/tools/extras/support-library.html 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+61. Group: androidx.viewpager2 Name: viewpager2 Version: 1.0.0 
+POM Project URL: https://developer.android.com/jetpack/androidx 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+62. Group: com.android.volley Name: volley Version: 1.1.1 
+
+63. Group: com.google.android.material Name: material Version: 1.3.0-alpha03 
+POM Project URL: https://github.com/material-components/material-components-android 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+64. Group: com.google.code.gson Name: gson Version: 2.8.5 
+POM License: Apache 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+65. Group: com.squareup.okhttp3 Name: okhttp Version: 3.10.0 
+POM License: Apache 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+66. Group: com.squareup.okio Name: okio Version: 1.14.0 
+POM License: Apache 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+67. Group: com.squareup.picasso Name: picasso Version: 2.71828 
+POM Project URL: https://github.com/square/picasso/ 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+68. Group: com.squareup.retrofit2 Name: converter-gson Version: 2.4.0 
+POM License: Apache 2.0 - https://www.apache.org/licenses/LICENSE-2.0.txt 
+
+69. Group: com.squareup.retrofit2 Name: retrofit Version: 2.4.0 
+POM License: Apache 2.0 - https://www.apache.org/licenses/LICENSE-2.0.txt 
+
+70. Group: org.jetbrains Name: annotations Version: 13.0 
+POM Project URL: http://www.jetbrains.org 
+POM License: The Apache Software License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+71. Group: org.jetbrains.kotlin Name: kotlin-stdlib Version: 1.3.72 
+POM Project URL: https://kotlinlang.org/ 
+POM License: The Apache License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+72. Group: org.jetbrains.kotlin Name: kotlin-stdlib-common Version: 1.3.72 
+POM Project URL: https://kotlinlang.org/ 
+POM License: The Apache License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+73. Group: org.jetbrains.kotlin Name: kotlin-stdlib-jdk7 Version: 1.3.72 
+POM Project URL: https://kotlinlang.org/ 
+POM License: The Apache License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0.txt 
+
+74. Group: org.jetbrains.kotlinx Name: kotlinx-coroutines-android Version: 1.3.0 
+POM Project URL: https://github.com/Kotlin/kotlinx.coroutines 
+POM License: The Apache Software License, Version 2.0 - https://www.apache.org/licenses/LICENSE-2.0.txt 
+
+75. Group: org.jetbrains.kotlinx Name: kotlinx-coroutines-core Version: 1.3.0 
+POM Project URL: https://github.com/Kotlin/kotlinx.coroutines 
+POM License: The Apache Software License, Version 2.0 - https://www.apache.org/licenses/LICENSE-2.0.txt 
+
+This report was generated at Fri Apr 09 22:03:33 CEST 2021 . 
