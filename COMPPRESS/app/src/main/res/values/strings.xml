@@ -35,10 +35,10 @@
     <string name="rating">Rating</string>
     <string name="rating_successful">Rating successful</string>
     <string name="rating_error">Please rate all criteria</string>
-    <string name="criterion1">Sound Usage of Sources </string>
-    <string name="criterion2">Plausible Reasoning </string>
+    <string name="criterion1">Diligent Source Work</string>
+    <string name="criterion2">Plausible Argumentation</string>
     <string name="criterion3">Balanced Coverage</string>
-    <string name="criterion1_description">- Are the claims being made in the text backed\n &#x0A; up by evidence?\n- Are different sources being used?</string>
-    <string name="criterion2_description">- Are the points being made backed up?\n- Are they being reflected upon?\n- Does the author apply logic to his reasoning?</string>
-    <string name="criterion3_description">- Are different viewpoints being reported?\n- Is the coverage fair and well-balanced?</string>
+    <string name="criterion1_description">- Is there evidence for the statements in the text?\n- Are the various sources named?</string>
+    <string name="criterion2_description">- Is there evidence for the arguments?\n- Are these reflected?\n- Does the author use a logical argument?</string>
+    <string name="criterion3_description">- Are different arguments presented?\n- Is the reporting fair and well-balanced?</string>
 </resources>
