@@ -22,20 +22,20 @@
             android:id="@+id/join_drawer"
             android:icon="@drawable/group_add_24dp"
             android:title="@string/join"/>
-        <item android:id="@+id/publisher_drawer"
-            android:icon="@drawable/article_black_24dp"
-            android:title="@string/publishers"/>
         <item
             android:id="@+id/github_drawer"
             android:icon="@drawable/github_24dp"
             android:title="@string/github"/>
         <item
             android:id="@+id/supportchat_drawer"
-            android:icon="@drawable/chat_24dp"
+            android:icon="@drawable/telegram_24dp"
             android:title="@string/support_chat"/>
+        <item android:id="@+id/publisher_drawer"
+            android:icon="@drawable/article_black_24dp"
+            android:title="@string/publishers"/>
         <item
-            android:id="@+id/licence_drawer"
+            android:id="@+id/license_drawer"
             android:icon="@drawable/approval_black_24dp"
-            android:title="@string/licence"/>
+            android:title="@string/license"/>
     </group>
 </menu>

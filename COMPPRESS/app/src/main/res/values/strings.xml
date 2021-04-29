@@ -29,16 +29,16 @@
     <string name="join">Become a member</string>
     <string name="publishers">Publisher Information</string>
     <string name="github">Github</string>
-    <string name="licence">Licence</string>
+    <string name="license">Licenses</string>
     <string name="support_chat">Support chat</string>
     <string name="in_progress">(In planning)</string>
     <string name="rating">Rating</string>
     <string name="rating_successful">Rating successful</string>
     <string name="rating_error">Please rate all criteria</string>
-    <string name="criterion1">Sorgfältige Quellenarbeit (EN)</string>
-    <string name="criterion2">Plausible Argumentation (EN)</string>
-    <string name="criterion3">Ausgewogene Berichterstattung (EN)</string>
-    <string name="criterion1_description">- Sind die Aussagen des Textes belegt?\n- Werden unterschiedliche Quellen genannt? (EN)</string>
-    <string name="criterion2_description">- Sind die Argumente belegt?\n- Werden diese reflektiert?\n- Bedient sich der Autor einer logischen\n Argumentation? (EN)</string>
-    <string name="criterion3_description">- Werden unterschiedliche Argumentations-\n standpunkte wiedergegeben?\n- Wird fair und ausgewogen berichtet? (EN)</string>
+    <string name="criterion1">Diligent Source Work</string>
+    <string name="criterion2">Plausible Argumentation</string>
+    <string name="criterion3">Balanced Coverage</string>
+    <string name="criterion1_description">- Is there evidence for the statements in the text?\n- Are the various sources named?</string>
+    <string name="criterion2_description">- Is there evidence for the arguments?\n- Are these reflected?\n- Does the author use a logical argument?</string>
+    <string name="criterion3_description">- Are different arguments presented?\n- Is the reporting fair and well-balanced?</string>
 </resources>
